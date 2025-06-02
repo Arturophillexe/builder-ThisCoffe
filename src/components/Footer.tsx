@@ -16,9 +16,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <Coffee className="h-8 w-8 text-coffee-green" />
-              <span className="text-2xl font-bold">thiscoffee</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <img
+                src="/thiscoffee-logo.png"
+                alt="thiscoffee - Conectando pasiones, taza a taza"
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-coffee-cream/80 mb-6 max-w-md">
               Your premier destination for exceptional coffee experiences. From

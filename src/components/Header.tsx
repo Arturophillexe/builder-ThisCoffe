@@ -27,18 +27,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/thiscoffee-logo.svg"
-              alt="thiscoffee logo"
-              className="h-12 w-12 object-contain"
+              src="/thiscoffee-logo.png"
+              alt="thiscoffee - Conectando pasiones, taza a taza"
+              className="h-10 w-auto object-contain"
             />
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-coffee-cream leading-tight">
-                thiscoffee
-              </span>
-              <span className="text-xs text-coffee-green leading-tight hidden sm:block">
-                Conectando pasiones, taza a taza
-              </span>
-            </div>
           </Link>
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
