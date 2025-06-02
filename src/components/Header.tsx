@@ -53,8 +53,24 @@ const Header = () => {
           {/* Call to Action */}
           <div className="hidden md:flex items-center space-x-4">
             <Button
+              variant="ghost"
+              asChild
+              size="sm"
+              className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+            >
+              <Link to="/login">Sign In</Link>
+            </Button>
+            <Button
+              asChild
+              size="sm"
+              className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
+            >
+              <Link to="/signup">Sign Up</Link>
+            </Button>
+            <Button
               variant="outline"
               asChild
+              size="sm"
               className="border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
             >
               <Link to="/events">Book Event</Link>
@@ -93,15 +109,34 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button
-                variant="outline"
-                asChild
-                className="w-full mt-4 border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
-              >
-                <Link to="/events" onClick={() => setIsMenuOpen(false)}>
-                  Book Event
-                </Link>
-              </Button>
+              <div className="mt-4 space-y-2">
+                <Button
+                  variant="ghost"
+                  asChild
+                  className="w-full text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                >
+                  <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                    Sign In
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
+                >
+                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                    Sign Up
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  asChild
+                  className="w-full border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
+                >
+                  <Link to="/events" onClick={() => setIsMenuOpen(false)}>
+                    Book Event
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         )}
