@@ -19,6 +19,13 @@ export default {
     },
     extend: {
       colors: {
+        // Custom coffee shop colors
+        coffee: {
+          brown: "#4B2E2E",
+          cream: "#F5F0E1",
+          green: "#6B8E23",
+          dark: "#2F2F2F",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
