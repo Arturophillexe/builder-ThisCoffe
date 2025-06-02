@@ -19,13 +19,25 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
+            {/* Logo Integration */}
+            <div className="flex justify-center lg:justify-start mb-8">
+              <img
+                src="/thiscoffee-logo.png"
+                alt="thiscoffee - Conectando pasiones, taza a taza"
+                className="h-24 w-auto object-contain"
+              />
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-bold text-coffee-cream mb-6 leading-tight">
               Welcome to <span className="text-coffee-green">thiscoffee</span>
             </h1>
             <p className="text-xl text-coffee-cream/90 mb-8 max-w-2xl">
               Where exceptional coffee meets unforgettable experiences. Discover
               premium beans, learn brewing techniques, and elevate your
-              corporate events with our professional coffee services.
+              corporate events with our professional coffee services.{" "}
+              <span className="text-coffee-green italic">
+                Conectando pasiones, taza a taza.
+              </span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

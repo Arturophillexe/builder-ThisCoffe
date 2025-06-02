@@ -27,9 +27,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/logo.png"
+              src="/thiscoffee-logo.png"
               alt="thiscoffee - Conectando pasiones, taza a taza"
-              className="h-10 w-auto object-contain filter brightness-0 invert"
+              className="h-12 w-auto object-contain"
             />
           </Link>
           {/* Desktop Navigation */}
