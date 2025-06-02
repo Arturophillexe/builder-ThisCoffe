@@ -1,0 +1,34 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#F5F0E1"/>
+  
+  <!-- Steam -->
+  <path d="M180 60 C185 45, 195 50, 190 35 C185 20, 175 25, 180 10" stroke="#4B2E2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M200 65 C205 50, 215 55, 210 40 C205 25, 195 30, 200 15" stroke="#4B2E2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M220 60 C225 45, 235 50, 230 35 C225 20, 215 25, 220 10" stroke="#4B2E2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+  
+  <!-- Coffee Cup Outer -->
+  <path d="M80 120 L80 240 C80 270, 100 290, 130 290 L270 290 C300 290, 320 270, 320 240 L320 120 Z" fill="#4B2E2E" stroke="#4B2E2E" stroke-width="8"/>
+  
+  <!-- Cup Handle -->
+  <path d="M320 160 C350 160, 370 180, 370 210 C370 240, 350 260, 320 260" stroke="#4B2E2E" stroke-width="12" fill="none"/>
+  
+  <!-- Coffee Cup Inner (cream) -->
+  <ellipse cx="200" cy="120" rx="110" ry="15" fill="#F5F0E1"/>
+  <rect x="90" y="120" width="220" height="160" fill="#F5F0E1"/>
+  <ellipse cx="200" cy="280" rx="110" ry="15" fill="#F5F0E1"/>
+  
+  <!-- Location Pin -->
+  <circle cx="200" cy="190" r="35" fill="#6B8E23"/>
+  <circle cx="200" cy="185" r="15" fill="#F5F0E1"/>
+  <path d="M200 155 C185 155, 175 170, 175 185 C175 200, 200 225, 200 225 C200 225, 225 200, 225 185 C225 170, 215 155, 200 155 Z" fill="#6B8E23"/>
+  
+  <!-- Saucer -->
+  <ellipse cx="200" cy="300" rx="140" ry="20" fill="#4B2E2E"/>
+  
+  <!-- Brand Name -->
+  <text x="200" y="350" font-family="serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#4B2E2E">Thiscoffee</text>
+  
+  <!-- Tagline -->
+  <text x="200" y="380" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#6B8E23">Conectando pasiones, taza a taza.</text>
+</svg>

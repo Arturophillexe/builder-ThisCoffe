@@ -25,13 +25,21 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <Coffee className="h-8 w-8 text-coffee-cream" />
-            <span className="text-xl font-bold text-coffee-cream">
-              thiscoffee
-            </span>
+          <Link to="/" className="flex items-center space-x-3">
+            <img
+              src="/thiscoffee-logo.svg"
+              alt="thiscoffee logo"
+              className="h-12 w-12 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-coffee-cream leading-tight">
+                thiscoffee
+              </span>
+              <span className="text-xs text-coffee-green leading-tight hidden sm:block">
+                Conectando pasiones, taza a taza
+              </span>
+            </div>
           </Link>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
