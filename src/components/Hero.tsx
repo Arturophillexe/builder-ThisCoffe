@@ -22,7 +22,7 @@ const Hero = () => {
             {/* Logo Integration */}
             <div className="flex justify-center lg:justify-start mb-8">
               <img
-                src="/thiscoffee-logo.png"
+                src="https://cdn.builder.io/api/v1/image/assets%2F331a2aed35f74393af73925ea74d7cae%2F18535bf50fbd45cea33301f7e3ea0718"
                 alt="thiscoffee - Conectando pasiones, taza a taza"
                 className="h-24 w-auto object-contain"
               />

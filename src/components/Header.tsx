@@ -27,7 +27,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/thiscoffee-logo.png"
+              src="https://cdn.builder.io/api/v1/image/assets%2F331a2aed35f74393af73925ea74d7cae%2Fccfc854a0a584e8ebbd7cca562075d64"
               alt="thiscoffee - Conectando pasiones, taza a taza"
               className="h-12 w-auto object-contain"
             />
