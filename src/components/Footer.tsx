@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/thiscoffee-logo.png"
+                src="https://cdn.builder.io/api/v1/image/assets%2F331a2aed35f74393af73925ea74d7cae%2Fb2769bacb79e423abc172d58806dc33b"
                 alt="thiscoffee - Conectando pasiones, taza a taza"
                 className="h-16 w-auto object-contain"
               />
