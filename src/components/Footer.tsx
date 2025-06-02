@@ -18,9 +18,9 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/thiscoffee-logo.png"
+                src="/logo.png"
                 alt="thiscoffee - Conectando pasiones, taza a taza"
-                className="h-16 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-coffee-cream/80 mb-6 max-w-md">
