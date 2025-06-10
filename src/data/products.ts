@@ -13,20 +13,21 @@ export interface CoffeeProduct {
 export const coffeeProducts: CoffeeProduct[] = [
   {
     id: "1",
-    name: "Ethiopian Yirgacheffe",
+    name: "Etíope Yirgacheffe",
     description:
-      "Bright, floral notes with citrus undertones. Perfect for pour-over brewing.",
+      "Notas brillantes y florales con toques cítricos. Perfecto para preparaciones de filtro.",
     price: 24.99,
     image: "/placeholder.svg",
     category: "beans",
-    origin: "Ethiopia",
+    origin: "Etiopía",
     roastLevel: "light",
     featured: true,
   },
   {
     id: "2",
-    name: "Colombian Supremo",
-    description: "Rich, full-bodied coffee with chocolate and caramel notes.",
+    name: "Colombiano Supremo",
+    description:
+      "Café de cuerpo pleno y rico con notas de chocolate y caramelo.",
     price: 22.99,
     image: "/placeholder.svg",
     category: "beans",
@@ -36,19 +37,19 @@ export const coffeeProducts: CoffeeProduct[] = [
   },
   {
     id: "3",
-    name: "French Roast",
-    description: "Bold, smoky flavor with a rich, intense finish.",
+    name: "Tueste Francés",
+    description: "Sabor audaz y ahumado con un final rico e intenso.",
     price: 19.99,
     image: "/placeholder.svg",
     category: "beans",
-    origin: "Brazil",
+    origin: "Brasil",
     roastLevel: "dark",
   },
   {
     id: "4",
-    name: "House Blend Ground",
+    name: "Mezcla de la Casa Molido",
     description:
-      "Our signature blend, perfectly ground for drip coffee makers.",
+      "Nuestra mezcla característica, perfectamente molida para cafeteras de goteo.",
     price: 16.99,
     image: "/placeholder.svg",
     category: "ground",
@@ -57,8 +58,9 @@ export const coffeeProducts: CoffeeProduct[] = [
   },
   {
     id: "5",
-    name: "Espresso Blend",
-    description: "Rich, concentrated flavor perfect for espresso machines.",
+    name: "Mezcla para Espresso",
+    description:
+      "Sabor rico y concentrado, perfecto para máquinas de espresso.",
     price: 21.99,
     image: "/placeholder.svg",
     category: "ground",
@@ -66,25 +68,26 @@ export const coffeeProducts: CoffeeProduct[] = [
   },
   {
     id: "6",
-    name: "Pour Over Dripper",
+    name: "Gotero Pour Over",
     description:
-      "Premium ceramic dripper for the perfect pour-over experience.",
+      "Gotero de cerámica premium para la experiencia perfecta de pour-over.",
     price: 34.99,
     image: "/placeholder.svg",
     category: "equipment",
   },
   {
     id: "7",
-    name: "French Press",
-    description: "Classic glass French press for full-bodied coffee.",
+    name: "Prensa Francesa",
+    description:
+      "Prensa francesa clásica de vidrio para café de cuerpo completo.",
     price: 42.99,
     image: "/placeholder.svg",
     category: "equipment",
   },
   {
     id: "8",
-    name: "Coffee Grinder",
-    description: "Burr grinder for consistent, fresh ground coffee.",
+    name: "Molino de Café",
+    description: "Molino de fresas para café molido consistente y fresco.",
     price: 89.99,
     image: "/placeholder.svg",
     category: "equipment",

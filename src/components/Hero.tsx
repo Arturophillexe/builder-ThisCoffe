@@ -29,12 +29,13 @@ const Hero = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-coffee-cream mb-6 leading-tight">
-              Welcome to <span className="text-coffee-green">thiscoffee</span>
+              Bienvenido a <span className="text-coffee-green">thiscoffee</span>
             </h1>
             <p className="text-xl text-coffee-cream/90 mb-8 max-w-2xl">
-              Where exceptional coffee meets unforgettable experiences. Discover
-              premium beans, learn brewing techniques, and elevate your
-              corporate events with our professional coffee services.{" "}
+              Donde el café excepcional se encuentra con experiencias
+              inolvidables. Descubre granos premium, aprende técnicas de
+              preparación y eleva tus eventos corporativos con nuestros
+              servicios profesionales de café.{" "}
               <span className="text-coffee-green italic">
                 Conectando pasiones, taza a taza.
               </span>
@@ -48,7 +49,7 @@ const Hero = () => {
               >
                 <Link to="/shop" className="flex items-center space-x-2">
                   <Coffee className="h-5 w-5" />
-                  <span>Shop Coffee</span>
+                  <span>Comprar Café</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -61,7 +62,7 @@ const Hero = () => {
               >
                 <Link to="/events" className="flex items-center space-x-2">
                   <Users className="h-5 w-5" />
-                  <span>Book Event</span>
+                  <span>Reservar Evento</span>
                 </Link>
               </Button>
             </div>
@@ -72,42 +73,44 @@ const Hero = () => {
             <div className="bg-coffee-cream/10 backdrop-blur-sm rounded-lg p-6 border border-coffee-cream/20">
               <Coffee className="h-8 w-8 text-coffee-green mb-4" />
               <h3 className="text-lg font-semibold text-coffee-cream mb-2">
-                Premium Coffee
+                Café Premium
               </h3>
               <p className="text-coffee-cream/80 text-sm">
-                Carefully sourced beans from the world's finest coffee regions.
+                Granos cuidadosamente seleccionados de las mejores regiones
+                cafeteras del mundo.
               </p>
             </div>
 
             <div className="bg-coffee-cream/10 backdrop-blur-sm rounded-lg p-6 border border-coffee-cream/20">
               <Users className="h-8 w-8 text-coffee-green mb-4" />
               <h3 className="text-lg font-semibold text-coffee-cream mb-2">
-                Corporate Events
+                Eventos Corporativos
               </h3>
               <p className="text-coffee-cream/80 text-sm">
-                Professional coffee catering for your business events and
-                meetings.
+                Catering profesional de café para tus eventos empresariales y
+                reuniones.
               </p>
             </div>
 
             <div className="bg-coffee-cream/10 backdrop-blur-sm rounded-lg p-6 border border-coffee-cream/20">
               <BookOpen className="h-8 w-8 text-coffee-green mb-4" />
               <h3 className="text-lg font-semibold text-coffee-cream mb-2">
-                Coffee Education
+                Educación Cafetera
               </h3>
               <p className="text-coffee-cream/80 text-sm">
-                Learn brewing techniques and discover new ways to enjoy coffee.
+                Aprende técnicas de preparación y descubre nuevas formas de
+                disfrutar el café.
               </p>
             </div>
 
             <div className="bg-coffee-cream/10 backdrop-blur-sm rounded-lg p-6 border border-coffee-cream/20">
               <ArrowRight className="h-8 w-8 text-coffee-green mb-4" />
               <h3 className="text-lg font-semibold text-coffee-cream mb-2">
-                Expert Guidance
+                Asesoría Experta
               </h3>
               <p className="text-coffee-cream/80 text-sm">
-                Our coffee experts help you find the perfect blend for any
-                occasion.
+                Nuestros expertos en café te ayudan a encontrar la mezcla
+                perfecta para cualquier ocasión.
               </p>
             </div>
           </div>

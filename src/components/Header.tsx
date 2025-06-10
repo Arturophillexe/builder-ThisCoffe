@@ -9,11 +9,11 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Shop", href: "/shop" },
+    { name: "Inicio", href: "/" },
+    { name: "Tienda", href: "/shop" },
     { name: "Blog", href: "/blog" },
-    { name: "Events", href: "/events" },
-    { name: "About", href: "/about" },
+    { name: "Eventos", href: "/events" },
+    { name: "Nosotros", href: "/about" },
   ];
 
   const isActiveRoute = (href: string) => {
@@ -32,6 +32,7 @@ const Header = () => {
               className="h-12 w-auto object-contain"
             />
           </Link>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
@@ -58,14 +59,14 @@ const Header = () => {
               size="sm"
               className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
             >
-              <Link to="/login">Sign In</Link>
+              <Link to="/login">Iniciar Sesión</Link>
             </Button>
             <Button
               asChild
               size="sm"
               className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
             >
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup">Registrarse</Link>
             </Button>
             <Button
               variant="outline"
@@ -73,7 +74,7 @@ const Header = () => {
               size="sm"
               className="border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
             >
-              <Link to="/events">Book Event</Link>
+              <Link to="/events">Reservar Evento</Link>
             </Button>
           </div>
 
@@ -116,7 +117,7 @@ const Header = () => {
                   className="w-full text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
                 >
                   <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                    Sign In
+                    Iniciar Sesión
                   </Link>
                 </Button>
                 <Button
@@ -124,7 +125,7 @@ const Header = () => {
                   className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
                 >
                   <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                    Sign Up
+                    Registrarse
                   </Link>
                 </Button>
                 <Button
@@ -133,7 +134,7 @@ const Header = () => {
                   className="w-full border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
                 >
                   <Link to="/events" onClick={() => setIsMenuOpen(false)}>
-                    Book Event
+                    Reservar Evento
                   </Link>
                 </Button>
               </div>

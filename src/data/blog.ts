@@ -13,12 +13,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "The Art of Pour Over Coffee",
+    title: "El Arte del Café Pour Over",
     excerpt:
-      "Master the technique of pour-over brewing for the perfect cup every time.",
+      "Domina la técnica de preparación pour-over para la taza perfecta en todo momento.",
     content:
-      "Pour-over coffee is more than just a brewing method—it's an art form that allows you to control every variable in your coffee-making process...",
-    author: "Sarah Martinez",
+      "El café pour-over es más que un método de preparación—es una forma de arte que te permite controlar cada variable en tu proceso de preparación de café...",
+    author: "Sarah Martínez",
     publishedAt: "2024-01-15",
     image: "/placeholder.svg",
     category: "brewing",
@@ -26,11 +26,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "2",
-    title: "Exploring Coffee Origins: Ethiopia",
-    excerpt:
-      "Discover the birthplace of coffee and its unique flavor profiles.",
+    title: "Explorando Orígenes del Café: Etiopía",
+    excerpt: "Descubre la cuna del café y sus perfiles de sabor únicos.",
     content:
-      "Ethiopia is widely considered the birthplace of coffee, and its beans offer some of the most complex and unique flavor profiles in the world...",
+      "Etiopía es ampliamente considerada la cuna del café, y sus granos ofrecen algunos de los perfiles de sabor más complejos y únicos del mundo...",
     author: "David Chen",
     publishedAt: "2024-01-12",
     image: "/placeholder.svg",
@@ -39,12 +38,12 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "3",
-    title: "5 Creative Coffee Cocktails for Your Next Event",
+    title: "5 Cócteles de Café Creativos para tu Próximo Evento",
     excerpt:
-      "Elevate your corporate events with these sophisticated coffee-based drinks.",
+      "Eleva tus eventos corporativos con estas bebidas sofisticadas a base de café.",
     content:
-      "Coffee cocktails are the perfect way to add sophistication to any corporate event. Here are five creative recipes that will impress your guests...",
-    author: "Emma Rodriguez",
+      "Los cócteles de café son la manera perfecta de agregar sofisticación a cualquier evento corporativo. Aquí tienes cinco recetas creativas que impresionarán a tus invitados...",
+    author: "Emma Rodríguez",
     publishedAt: "2024-01-10",
     image: "/placeholder.svg",
     category: "recipes",
@@ -52,11 +51,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "4",
-    title: "Cold Brew vs Iced Coffee: What's the Difference?",
+    title: "Cold Brew vs Café Helado: ¿Cuál es la Diferencia?",
     excerpt:
-      "Understanding the key differences between these popular cold coffee preparations.",
+      "Entendiendo las diferencias clave entre estas populares preparaciones de café frío.",
     content:
-      "Many people use the terms cold brew and iced coffee interchangeably, but they are actually quite different in preparation and taste...",
+      "Muchas personas usan los términos cold brew y café helado indistintamente, pero en realidad son bastante diferentes en preparación y sabor...",
     author: "Michael Torres",
     publishedAt: "2024-01-08",
     image: "/placeholder.svg",
@@ -64,10 +63,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "5",
-    title: "Corporate Coffee Catering: Making Your Event Memorable",
-    excerpt: "How to choose the right coffee service for your business events.",
+    title: "Catering de Café Corporativo: Haciendo tu Evento Memorable",
+    excerpt:
+      "Cómo elegir el servicio de café adecuado para tus eventos empresariales.",
     content:
-      "The right coffee service can make or break a corporate event. Here's everything you need to know about choosing the perfect coffee catering...",
+      "El servicio de café correcto puede hacer o deshacer un evento corporativo. Aquí está todo lo que necesitas saber sobre elegir el catering de café perfecto...",
     author: "Lisa Johnson",
     publishedAt: "2024-01-05",
     image: "/placeholder.svg",
@@ -75,12 +75,12 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "6",
-    title: "The Science Behind Coffee Roasting",
+    title: "La Ciencia Detrás del Tostado de Café",
     excerpt:
-      "Understanding how roasting transforms green coffee beans into the perfect brew.",
+      "Entendiendo cómo el tostado transforma los granos verdes en la preparación perfecta.",
     content:
-      "Coffee roasting is a complex chemical process that transforms green coffee beans into the aromatic, flavorful beans we know and love...",
-    author: "Robert Kim",
+      "El tostado de café es un proceso químico complejo que transforma los granos verdes en los granos aromáticos y sabrosos que conocemos y amamos...",
+    author: "Roberto Kim",
     publishedAt: "2024-01-03",
     image: "/placeholder.svg",
     category: "tips",
