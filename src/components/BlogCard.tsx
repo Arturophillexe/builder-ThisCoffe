@@ -26,8 +26,25 @@ const BlogCard = ({ post }: BlogCardProps) => {
     }
   };
 
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "brewing":
+        return "preparación";
+      case "origins":
+        return "orígenes";
+      case "recipes":
+        return "recetas";
+      case "events":
+        return "eventos";
+      case "tips":
+        return "consejos";
+      default:
+        return category;
+    }
+  };
+
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString("es-ES", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -48,7 +65,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
               variant="outline"
               className={getCategoryColor(post.category)}
             >
-              {post.category}
+              {getCategoryLabel(post.category)}
             </Badge>
           </div>
         </div>
@@ -78,7 +95,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
           to={`/blog/${post.id}`}
           className="inline-flex items-center text-coffee-green hover:text-coffee-brown transition-colors text-sm font-medium group/link"
         >
-          Read more
+          Leer más
           <ArrowRight className="h-3 w-3 ml-1 group-hover/link:translate-x-1 transition-transform" />
         </Link>
       </CardContent>

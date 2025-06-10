@@ -27,6 +27,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
     }
   };
 
+  const getRoastLevelLabel = (level?: string) => {
+    switch (level) {
+      case "light":
+        return "tueste claro";
+      case "medium":
+        return "tueste medio";
+      case "dark":
+        return "tueste oscuro";
+      default:
+        return level;
+    }
+  };
+
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "beans":
@@ -39,6 +52,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
         return "bg-coffee-cream/40 text-coffee-dark border-coffee-cream/60";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "beans":
+        return "granos";
+      case "ground":
+        return "molido";
+      case "equipment":
+        return "equipos";
+      case "accessories":
+        return "accesorios";
+      default:
+        return category;
     }
   };
 
@@ -55,7 +83,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <div className="absolute top-3 left-3">
               <Badge className="bg-coffee-green text-coffee-dark border-0">
                 <Star className="h-3 w-3 mr-1" />
-                Featured
+                Destacado
               </Badge>
             </div>
           )}
@@ -64,7 +92,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               variant="outline"
               className={getCategoryColor(product.category)}
             >
-              {product.category}
+              {getCategoryLabel(product.category)}
             </Badge>
           </div>
         </div>
@@ -77,7 +105,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               variant="outline"
               className={getRoastLevelColor(product.roastLevel)}
             >
-              {product.roastLevel} roast
+              {getRoastLevelLabel(product.roastLevel)}
             </Badge>
           )}
           {product.origin && (
@@ -109,7 +137,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           size="sm"
         >
           <ShoppingCart className="h-4 w-4 mr-2" />
-          Add to Cart
+          Agregar al Carrito
         </Button>
       </CardFooter>
     </Card>

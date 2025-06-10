@@ -19,18 +19,18 @@ const Blog = () => {
   const [sortBy, setSortBy] = useState<string>("newest");
 
   const categories = [
-    { value: "all", label: "All Categories" },
-    { value: "brewing", label: "Brewing Techniques" },
-    { value: "origins", label: "Coffee Origins" },
-    { value: "recipes", label: "Recipes" },
-    { value: "events", label: "Events" },
-    { value: "tips", label: "Tips & Guides" },
+    { value: "all", label: "Todas las Categorías" },
+    { value: "brewing", label: "Técnicas de Preparación" },
+    { value: "origins", label: "Orígenes del Café" },
+    { value: "recipes", label: "Recetas" },
+    { value: "events", label: "Eventos" },
+    { value: "tips", label: "Consejos y Guías" },
   ];
 
   const sortOptions = [
-    { value: "newest", label: "Newest First" },
-    { value: "oldest", label: "Oldest First" },
-    { value: "title", label: "Title (A-Z)" },
+    { value: "newest", label: "Más Recientes" },
+    { value: "oldest", label: "Más Antiguos" },
+    { value: "title", label: "Título (A-Z)" },
   ];
 
   const filterPosts = (posts: BlogPost[]) => {
@@ -92,8 +92,25 @@ const Blog = () => {
     }
   };
 
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "brewing":
+        return "preparación";
+      case "origins":
+        return "orígenes";
+      case "recipes":
+        return "recetas";
+      case "events":
+        return "eventos";
+      case "tips":
+        return "consejos";
+      default:
+        return category;
+    }
+  };
+
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString("es-ES", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -105,10 +122,11 @@ const Blog = () => {
       {/* Header */}
       <div className="bg-coffee-brown text-coffee-cream py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Coffee Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">Blog de Café</h1>
           <p className="text-lg text-coffee-cream/90 max-w-2xl">
-            Explore the world of coffee through our expert articles, brewing
-            guides, and stories from coffee enthusiasts around the globe.
+            Explora el mundo del café a través de nuestros artículos expertos,
+            guías de preparación e historias de entusiastas del café de todo el
+            mundo.
           </p>
         </div>
       </div>
@@ -126,7 +144,7 @@ const Blog = () => {
                 />
                 <div className="absolute top-4 left-4">
                   <Badge className="bg-coffee-green text-coffee-dark">
-                    Featured Article
+                    Artículo Destacado
                   </Badge>
                 </div>
               </div>
@@ -135,7 +153,7 @@ const Blog = () => {
                   variant="outline"
                   className={`${getCategoryColor(featuredPost.category)} mb-4 w-fit`}
                 >
-                  {featuredPost.category}
+                  {getCategoryLabel(featuredPost.category)}
                 </Badge>
                 <h2 className="text-3xl font-bold text-coffee-dark mb-4">
                   {featuredPost.title}
@@ -154,7 +172,7 @@ const Blog = () => {
                   </div>
                 </div>
                 <Button className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream w-fit">
-                  Read Full Article
+                  Leer Artículo Completo
                 </Button>
               </div>
             </div>
@@ -168,7 +186,7 @@ const Blog = () => {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
-                  placeholder="Search articles..."
+                  placeholder="Buscar artículos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"
@@ -182,7 +200,7 @@ const Blog = () => {
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger className="w-48">
-                  <SelectValue placeholder="Category" />
+                  <SelectValue placeholder="Categoría" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -195,7 +213,7 @@ const Blog = () => {
 
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-40">
-                  <SelectValue placeholder="Sort by" />
+                  <SelectValue placeholder="Ordenar por" />
                 </SelectTrigger>
                 <SelectContent>
                   {sortOptions.map((option) => (
@@ -212,7 +230,7 @@ const Blog = () => {
         {/* Results Header */}
         <div className="flex justify-between items-center mb-6">
           <p className="text-gray-600">
-            Showing {filteredPosts.length} of {blogPosts.length} articles
+            Mostrando {filteredPosts.length} de {blogPosts.length} artículos
           </p>
         </div>
 
@@ -227,10 +245,11 @@ const Blog = () => {
           <div className="text-center py-12">
             <div className="text-6xl text-gray-300 mb-4">📝</div>
             <h3 className="text-lg font-semibold text-gray-600 mb-2">
-              No articles found
+              No se encontraron artículos
             </h3>
             <p className="text-gray-500 mb-4">
-              Try adjusting your search criteria or browse all our articles.
+              Intenta ajustar tus criterios de búsqueda o navega todos nuestros
+              artículos.
             </p>
             <Button
               onClick={() => {
@@ -240,7 +259,7 @@ const Blog = () => {
               }}
               variant="outline"
             >
-              Clear Filters
+              Limpiar Filtros
             </Button>
           </div>
         )}
@@ -250,21 +269,21 @@ const Blog = () => {
       <div className="bg-coffee-dark py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-coffee-cream mb-4">
-            Stay Updated with Our Blog
+            Mantente Actualizado con Nuestro Blog
           </h2>
           <p className="text-lg text-coffee-cream/80 mb-8">
-            Get the latest coffee articles, brewing tips, and industry insights
-            delivered to your inbox.
+            Recibe los últimos artículos de café, consejos de preparación y
+            noticias de la industria en tu bandeja de entrada.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Ingresa tu email"
               className="flex-1 px-4 py-3 rounded-lg border border-coffee-cream/20 bg-coffee-cream/10 text-coffee-cream placeholder-coffee-cream/60 focus:outline-none focus:ring-2 focus:ring-coffee-green"
             />
             <Button className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold px-8">
-              Subscribe
+              Suscribirse
             </Button>
           </div>
         </div>
