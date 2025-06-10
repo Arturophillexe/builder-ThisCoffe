@@ -48,9 +48,11 @@ const Login = () => {
             alt="thiscoffee - Conectando pasiones, taza a taza"
             className="h-16 w-auto object-contain mx-auto mb-4"
           />
-          <h2 className="text-3xl font-bold text-coffee-dark">Welcome back</h2>
+          <h2 className="text-3xl font-bold text-coffee-dark">
+            Bienvenido de vuelta
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Sign in to your thiscoffee account
+            Inicia sesión en tu cuenta de thiscoffee
           </p>
         </div>
 
@@ -58,13 +60,13 @@ const Login = () => {
         <Card className="mt-8">
           <CardHeader>
             <CardTitle className="text-2xl text-center text-coffee-dark">
-              Sign In
+              Iniciar Sesión
             </CardTitle>
           </CardHeader>
           <CardContent>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <Label htmlFor="email">Email address</Label>
+                <Label htmlFor="email">Dirección de email</Label>
                 <Input
                   id="email"
                   name="email"
@@ -74,12 +76,12 @@ const Login = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className="mt-1"
-                  placeholder="Enter your email"
+                  placeholder="Ingresa tu email"
                 />
               </div>
 
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Contraseña</Label>
                 <div className="mt-1 relative">
                   <Input
                     id="password"
@@ -89,7 +91,7 @@ const Login = () => {
                     required
                     value={formData.password}
                     onChange={handleInputChange}
-                    placeholder="Enter your password"
+                    placeholder="Ingresa tu contraseña"
                     className="pr-10"
                   />
                   <button
@@ -120,7 +122,7 @@ const Login = () => {
                     }
                   />
                   <Label htmlFor="rememberMe" className="text-sm text-gray-600">
-                    Remember me
+                    Recordarme
                   </Label>
                 </div>
 
@@ -128,7 +130,7 @@ const Login = () => {
                   to="/forgot-password"
                   className="text-sm text-coffee-green hover:text-coffee-brown transition-colors"
                 >
-                  Forgot password?
+                  ¿Olvidaste tu contraseña?
                 </Link>
               </div>
 
@@ -140,11 +142,11 @@ const Login = () => {
                 {isLoading ? (
                   <div className="flex items-center space-x-2">
                     <Coffee className="h-4 w-4 animate-spin" />
-                    <span>Signing in...</span>
+                    <span>Iniciando sesión...</span>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2">
-                    <span>Sign in</span>
+                    <span>Iniciar sesión</span>
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 )}
@@ -159,7 +161,7 @@ const Login = () => {
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <span className="px-2 bg-white text-gray-500">
-                    Or continue with
+                    O continuar con
                   </span>
                 </div>
               </div>
@@ -202,12 +204,12 @@ const Login = () => {
 
             {/* Sign up link */}
             <p className="mt-6 text-center text-sm text-gray-600">
-              Don't have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <Link
                 to="/signup"
                 className="font-medium text-coffee-green hover:text-coffee-brown transition-colors"
               >
-                Sign up for thiscoffee
+                Regístrate en thiscoffee
               </Link>
             </p>
           </CardContent>

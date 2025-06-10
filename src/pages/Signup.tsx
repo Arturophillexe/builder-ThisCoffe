@@ -50,12 +50,12 @@ const Signup = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      alert("Las contraseñas no coinciden");
       return;
     }
 
     if (!formData.agreeToTerms) {
-      alert("Please agree to the terms and conditions");
+      alert("Por favor acepta los términos y condiciones");
       return;
     }
 
@@ -71,13 +71,13 @@ const Signup = () => {
   };
 
   const roles = [
-    "Business Owner",
-    "Event Manager",
-    "HR Professional",
-    "Office Manager",
-    "Marketing Professional",
-    "Coffee Enthusiast",
-    "Other",
+    "Dueño de Negocio",
+    "Gerente de Eventos",
+    "Profesional de RRHH",
+    "Gerente de Oficina",
+    "Profesional de Marketing",
+    "Entusiasta del Café",
+    "Otro",
   ];
 
   return (
@@ -91,10 +91,10 @@ const Signup = () => {
             className="h-16 w-auto object-contain mx-auto mb-4"
           />
           <h2 className="text-3xl font-bold text-coffee-dark">
-            Join thiscoffee
+            Únete a thiscoffee
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Create your account and start your coffee journey
+            Crea tu cuenta y comienza tu viaje del café
           </p>
         </div>
 
@@ -102,7 +102,7 @@ const Signup = () => {
         <Card className="mt-8">
           <CardHeader>
             <CardTitle className="text-2xl text-center text-coffee-dark">
-              Create Account
+              Crear Cuenta
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -110,7 +110,7 @@ const Signup = () => {
               {/* Name Fields */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName">First name</Label>
+                  <Label htmlFor="firstName">Nombre</Label>
                   <Input
                     id="firstName"
                     name="firstName"
@@ -119,11 +119,11 @@ const Signup = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="John"
+                    placeholder="Juan"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="lastName">Last name</Label>
+                  <Label htmlFor="lastName">Apellido</Label>
                   <Input
                     id="lastName"
                     name="lastName"
@@ -132,14 +132,14 @@ const Signup = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="Doe"
+                    placeholder="Pérez"
                   />
                 </div>
               </div>
 
               {/* Email */}
               <div>
-                <Label htmlFor="email">Email address</Label>
+                <Label htmlFor="email">Dirección de email</Label>
                 <Input
                   id="email"
                   name="email"
@@ -149,14 +149,14 @@ const Signup = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className="mt-1"
-                  placeholder="john@company.com"
+                  placeholder="juan@empresa.com"
                 />
               </div>
 
               {/* Company and Role */}
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <Label htmlFor="company">Company (optional)</Label>
+                  <Label htmlFor="company">Empresa (opcional)</Label>
                   <Input
                     id="company"
                     name="company"
@@ -164,16 +164,16 @@ const Signup = () => {
                     value={formData.company}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="Your company name"
+                    placeholder="Nombre de tu empresa"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="role">Role</Label>
+                  <Label htmlFor="role">Rol</Label>
                   <Select
                     onValueChange={(value) => handleSelectChange("role", value)}
                   >
                     <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Select your role" />
+                      <SelectValue placeholder="Selecciona tu rol" />
                     </SelectTrigger>
                     <SelectContent>
                       {roles.map((role) => (
@@ -188,7 +188,7 @@ const Signup = () => {
 
               {/* Password Fields */}
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Contraseña</Label>
                 <div className="mt-1 relative">
                   <Input
                     id="password"
@@ -198,7 +198,7 @@ const Signup = () => {
                     required
                     value={formData.password}
                     onChange={handleInputChange}
-                    placeholder="Create a password"
+                    placeholder="Crea una contraseña"
                     className="pr-10"
                   />
                   <button
@@ -216,7 +216,7 @@ const Signup = () => {
               </div>
 
               <div>
-                <Label htmlFor="confirmPassword">Confirm password</Label>
+                <Label htmlFor="confirmPassword">Confirmar contraseña</Label>
                 <div className="mt-1 relative">
                   <Input
                     id="confirmPassword"
@@ -226,7 +226,7 @@ const Signup = () => {
                     required
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    placeholder="Confirm your password"
+                    placeholder="Confirma tu contraseña"
                     className="pr-10"
                   />
                   <button
@@ -262,19 +262,19 @@ const Signup = () => {
                     htmlFor="agreeToTerms"
                     className="text-sm text-gray-600 leading-5"
                   >
-                    I agree to the{" "}
+                    Acepto los{" "}
                     <Link
                       to="/terms"
                       className="text-coffee-green hover:text-coffee-brown"
                     >
-                      Terms of Service
+                      Términos de Servicio
                     </Link>{" "}
-                    and{" "}
+                    y la{" "}
                     <Link
                       to="/privacy"
                       className="text-coffee-green hover:text-coffee-brown"
                     >
-                      Privacy Policy
+                      Política de Privacidad
                     </Link>
                   </Label>
                 </div>
@@ -296,8 +296,8 @@ const Signup = () => {
                     htmlFor="subscribeNewsletter"
                     className="text-sm text-gray-600 leading-5"
                   >
-                    Subscribe to our newsletter for coffee tips and event
-                    updates
+                    Suscríbete a nuestro boletín para consejos de café y
+                    actualizaciones de eventos
                   </Label>
                 </div>
               </div>
@@ -310,11 +310,11 @@ const Signup = () => {
                 {isLoading ? (
                   <div className="flex items-center space-x-2">
                     <Coffee className="h-4 w-4 animate-spin" />
-                    <span>Creating account...</span>
+                    <span>Creando cuenta...</span>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2">
-                    <span>Create account</span>
+                    <span>Crear cuenta</span>
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 )}
@@ -324,36 +324,40 @@ const Signup = () => {
             {/* Benefits */}
             <div className="mt-6 p-4 bg-coffee-cream/50 rounded-lg">
               <h4 className="text-sm font-semibold text-coffee-dark mb-2">
-                Why join thiscoffee?
+                ¿Por qué unirse a thiscoffee?
               </h4>
               <ul className="text-xs text-gray-600 space-y-1">
                 <li className="flex items-center space-x-2">
                   <Check className="h-3 w-3 text-coffee-green" />
-                  <span>Exclusive access to premium coffee selections</span>
+                  <span>Acceso exclusivo a selecciones premium de café</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Check className="h-3 w-3 text-coffee-green" />
-                  <span>Priority booking for corporate events</span>
+                  <span>Reservas prioritarias para eventos corporativos</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Check className="h-3 w-3 text-coffee-green" />
-                  <span>Coffee brewing tips and exclusive content</span>
+                  <span>
+                    Consejos de preparación de café y contenido exclusivo
+                  </span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Check className="h-3 w-3 text-coffee-green" />
-                  <span>Member-only discounts and special offers</span>
+                  <span>
+                    Descuentos exclusivos para miembros y ofertas especiales
+                  </span>
                 </li>
               </ul>
             </div>
 
             {/* Sign in link */}
             <p className="mt-6 text-center text-sm text-gray-600">
-              Already have an account?{" "}
+              ¿Ya tienes una cuenta?{" "}
               <Link
                 to="/login"
                 className="font-medium text-coffee-green hover:text-coffee-brown transition-colors"
               >
-                Sign in to thiscoffee
+                Inicia sesión en thiscoffee
               </Link>
             </p>
           </CardContent>
