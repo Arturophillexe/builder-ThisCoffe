@@ -12,10 +12,10 @@ const CoffeeIdeas = () => {
   const [expandedIdea, setExpandedIdea] = useState<string | null>(null);
 
   const categories = [
-    { value: "all", label: "All Ideas", icon: Coffee },
-    { value: "hot", label: "Hot Coffee", icon: Thermometer },
-    { value: "cold", label: "Cold Coffee", icon: Thermometer },
-    { value: "specialty", label: "Specialty", icon: ChefHat },
+    { value: "all", label: "Todas las Ideas", icon: Coffee },
+    { value: "hot", label: "Café Caliente", icon: Thermometer },
+    { value: "cold", label: "Café Frío", icon: Thermometer },
+    { value: "specialty", label: "Especialidades", icon: ChefHat },
   ];
 
   const filteredIdeas =
@@ -36,6 +36,19 @@ const CoffeeIdeas = () => {
     }
   };
 
+  const getDifficultyLabel = (difficulty: string) => {
+    switch (difficulty) {
+      case "easy":
+        return "fácil";
+      case "medium":
+        return "medio";
+      case "hard":
+        return "difícil";
+      default:
+        return difficulty;
+    }
+  };
+
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "hot":
@@ -49,16 +62,29 @@ const CoffeeIdeas = () => {
     }
   };
 
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "hot":
+        return "caliente";
+      case "cold":
+        return "frío";
+      case "specialty":
+        return "especialidad";
+      default:
+        return category;
+    }
+  };
+
   return (
     <section className="py-16 bg-coffee-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-coffee-dark mb-4">
-            Coffee Preparation Ideas
+            Ideas de Preparación de Café
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover new ways to enjoy your coffee with our curated collection
-            of recipes and brewing techniques.
+            Descubre nuevas formas de disfrutar tu café con nuestra colección
+            curada de recetas y técnicas de preparación.
           </p>
         </div>
 
@@ -105,13 +131,13 @@ const CoffeeIdeas = () => {
                       variant="outline"
                       className={getCategoryColor(idea.category)}
                     >
-                      {idea.category}
+                      {getCategoryLabel(idea.category)}
                     </Badge>
                     <Badge
                       variant="outline"
                       className={getDifficultyColor(idea.difficulty)}
                     >
-                      {idea.difficulty}
+                      {getDifficultyLabel(idea.difficulty)}
                     </Badge>
                   </div>
                 </div>
@@ -133,7 +159,9 @@ const CoffeeIdeas = () => {
                   </div>
                   <div className="flex items-center space-x-1">
                     <ChefHat className="h-3 w-3" />
-                    <span className="capitalize">{idea.difficulty}</span>
+                    <span className="capitalize">
+                      {getDifficultyLabel(idea.difficulty)}
+                    </span>
                   </div>
                 </div>
 
@@ -145,14 +173,14 @@ const CoffeeIdeas = () => {
                   }
                   className="border-coffee-brown text-coffee-brown hover:bg-coffee-brown hover:text-coffee-cream"
                 >
-                  {expandedIdea === idea.id ? "Hide Recipe" : "Show Recipe"}
+                  {expandedIdea === idea.id ? "Ocultar Receta" : "Ver Receta"}
                 </Button>
 
                 {expandedIdea === idea.id && (
                   <div className="mt-4 pt-4 border-t border-gray-200">
                     <div className="mb-3">
                       <h4 className="font-semibold text-coffee-dark mb-2 text-sm">
-                        Ingredients:
+                        Ingredientes:
                       </h4>
                       <ul className="text-xs text-gray-600 space-y-1">
                         {idea.ingredients.map((ingredient, index) => (
@@ -166,7 +194,7 @@ const CoffeeIdeas = () => {
 
                     <div>
                       <h4 className="font-semibold text-coffee-dark mb-2 text-sm">
-                        Instructions:
+                        Instrucciones:
                       </h4>
                       <ol className="text-xs text-gray-600 space-y-1">
                         {idea.instructions.map((instruction, index) => (

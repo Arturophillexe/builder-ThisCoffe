@@ -21,25 +21,25 @@ const Shop = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const categories = [
-    { value: "all", label: "All Products" },
-    { value: "beans", label: "Coffee Beans" },
-    { value: "ground", label: "Ground Coffee" },
-    { value: "equipment", label: "Equipment" },
-    { value: "accessories", label: "Accessories" },
+    { value: "all", label: "Todos los Productos" },
+    { value: "beans", label: "Granos de Café" },
+    { value: "ground", label: "Café Molido" },
+    { value: "equipment", label: "Equipos" },
+    { value: "accessories", label: "Accesorios" },
   ];
 
   const roastLevels = [
-    { value: "all", label: "All Roast Levels" },
-    { value: "light", label: "Light Roast" },
-    { value: "medium", label: "Medium Roast" },
-    { value: "dark", label: "Dark Roast" },
+    { value: "all", label: "Todos los Tuestes" },
+    { value: "light", label: "Tueste Claro" },
+    { value: "medium", label: "Tueste Medio" },
+    { value: "dark", label: "Tueste Oscuro" },
   ];
 
   const sortOptions = [
-    { value: "name", label: "Name (A-Z)" },
-    { value: "price-low", label: "Price (Low to High)" },
-    { value: "price-high", label: "Price (High to Low)" },
-    { value: "featured", label: "Featured First" },
+    { value: "name", label: "Nombre (A-Z)" },
+    { value: "price-low", label: "Precio (Menor a Mayor)" },
+    { value: "price-high", label: "Precio (Mayor a Menor)" },
+    { value: "featured", label: "Destacados Primero" },
   ];
 
   const filterProducts = (products: CoffeeProduct[]) => {
@@ -110,12 +110,12 @@ const Shop = () => {
       {/* Header */}
       <div className="bg-coffee-brown text-coffee-cream py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Coffee Shop</h1>
+          <h1 className="text-4xl font-bold mb-4">Tienda de Café</h1>
           <p className="text-lg text-coffee-cream/90 max-w-2xl">
-            Discover our carefully curated selection of premium coffee beans,
-            equipment, and accessories. From single-origin beans to
-            state-of-the-art brewing equipment, find everything you need for the
-            perfect cup.
+            Descubre nuestra selección cuidadosamente curada de granos de café
+            premium, equipos y accesorios. Desde granos de origen único hasta
+            equipos de preparación de última generación, encuentra todo lo que
+            necesitas para la taza perfecta.
           </p>
         </div>
       </div>
@@ -128,7 +128,7 @@ const Shop = () => {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
-                  placeholder="Search products..."
+                  placeholder="Buscar productos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"
@@ -142,7 +142,7 @@ const Shop = () => {
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger className="w-40">
-                  <SelectValue placeholder="Category" />
+                  <SelectValue placeholder="Categoría" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -155,7 +155,7 @@ const Shop = () => {
 
               <Select value={selectedRoast} onValueChange={setSelectedRoast}>
                 <SelectTrigger className="w-44">
-                  <SelectValue placeholder="Roast Level" />
+                  <SelectValue placeholder="Nivel de Tueste" />
                 </SelectTrigger>
                 <SelectContent>
                   {roastLevels.map((roast) => (
@@ -168,7 +168,7 @@ const Shop = () => {
 
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-44">
-                  <SelectValue placeholder="Sort by" />
+                  <SelectValue placeholder="Ordenar por" />
                 </SelectTrigger>
                 <SelectContent>
                   {sortOptions.map((option) => (
@@ -203,21 +203,21 @@ const Shop = () => {
           {/* Active Filters */}
           {activeFiltersCount > 0 && (
             <div className="flex items-center gap-2 pt-4 border-t">
-              <span className="text-sm text-gray-600">Active filters:</span>
+              <span className="text-sm text-gray-600">Filtros activos:</span>
               {searchQuery && (
                 <Badge variant="secondary" className="text-xs">
-                  Search: "{searchQuery}"
+                  Búsqueda: "{searchQuery}"
                 </Badge>
               )}
               {selectedCategory !== "all" && (
                 <Badge variant="secondary" className="text-xs">
-                  Category:{" "}
+                  Categoría:{" "}
                   {categories.find((c) => c.value === selectedCategory)?.label}
                 </Badge>
               )}
               {selectedRoast !== "all" && (
                 <Badge variant="secondary" className="text-xs">
-                  Roast:{" "}
+                  Tueste:{" "}
                   {roastLevels.find((r) => r.value === selectedRoast)?.label}
                 </Badge>
               )}
@@ -227,7 +227,7 @@ const Shop = () => {
                 onClick={clearFilters}
                 className="text-xs h-auto p-1 text-coffee-brown hover:text-coffee-green"
               >
-                Clear all
+                Limpiar todo
               </Button>
             </div>
           )}
@@ -236,8 +236,8 @@ const Shop = () => {
         {/* Results Header */}
         <div className="flex justify-between items-center mb-6">
           <p className="text-gray-600">
-            Showing {filteredProducts.length} of {coffeeProducts.length}{" "}
-            products
+            Mostrando {filteredProducts.length} de {coffeeProducts.length}{" "}
+            productos
           </p>
         </div>
 
@@ -258,13 +258,14 @@ const Shop = () => {
           <div className="text-center py-12">
             <div className="text-6xl text-gray-300 mb-4">☕</div>
             <h3 className="text-lg font-semibold text-gray-600 mb-2">
-              No products found
+              No se encontraron productos
             </h3>
             <p className="text-gray-500 mb-4">
-              Try adjusting your search criteria or browse all our products.
+              Intenta ajustar tus criterios de búsqueda o navega todos nuestros
+              productos.
             </p>
             <Button onClick={clearFilters} variant="outline">
-              Clear Filters
+              Limpiar Filtros
             </Button>
           </div>
         )}
