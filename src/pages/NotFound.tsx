@@ -23,12 +23,12 @@ const NotFound = () => {
         <h1 className="text-6xl font-bold text-coffee-brown mb-4">404</h1>
 
         <h2 className="text-2xl font-semibold text-coffee-dark mb-4">
-          Oops! This brew went missing
+          ¡Oops! Esta preparación se perdió
         </h2>
 
         <p className="text-gray-600 mb-8">
-          The page you're looking for seems to have vanished like steam from a
-          hot cup of coffee. Let's get you back to where the good coffee is!
+          La página que buscas parece haber desaparecido como el vapor de una
+          taza de café caliente. ¡Regresemos a donde está el buen café!
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -38,7 +38,7 @@ const NotFound = () => {
           >
             <Link to="/" className="flex items-center space-x-2">
               <Home className="h-4 w-4" />
-              <span>Back to Home</span>
+              <span>Volver al Inicio</span>
             </Link>
           </Button>
 
@@ -49,7 +49,7 @@ const NotFound = () => {
           >
             <Link to="/shop" className="flex items-center space-x-2">
               <Coffee className="h-4 w-4" />
-              <span>Browse Coffee</span>
+              <span>Explorar Café</span>
             </Link>
           </Button>
         </div>
@@ -63,7 +63,7 @@ const NotFound = () => {
           >
             <button className="flex items-center space-x-2">
               <ArrowLeft className="h-4 w-4" />
-              <span>Go Back</span>
+              <span>Regresar</span>
             </button>
           </Button>
         </div>
