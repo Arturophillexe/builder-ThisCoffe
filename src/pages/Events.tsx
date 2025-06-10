@@ -60,59 +60,59 @@ const Events = () => {
   };
 
   const eventTypes = [
-    "Corporate Meeting",
-    "Conference",
-    "Workshop",
-    "Product Launch",
-    "Networking Event",
+    "Reunión Corporativa",
+    "Conferencia",
+    "Taller",
+    "Lanzamiento de Producto",
+    "Evento de Networking",
     "Team Building",
-    "Training Session",
-    "Client Meeting",
-    "Other",
+    "Sesión de Capacitación",
+    "Reunión con Clientes",
+    "Otro",
   ];
 
   const packages = [
     {
-      name: "Essential",
-      price: "Starting at $8/person",
+      name: "Esencial",
+      price: "Desde $8/persona",
       features: [
-        "Professional barista service",
-        "Premium coffee selection",
-        "Basic equipment setup",
-        "Standard cups and accessories",
-        "Service up to 2 hours",
+        "Servicio de barista profesional",
+        "Selección de café premium",
+        "Configuración básica de equipos",
+        "Tazas y accesorios estándar",
+        "Servicio hasta 2 horas",
       ],
-      bestFor: "Small meetings and workshops",
+      bestFor: "Reuniones pequeñas y talleres",
       minGuests: 10,
     },
     {
-      name: "Professional",
-      price: "Starting at $12/person",
+      name: "Profesional",
+      price: "Desde $12/persona",
       features: [
-        "Everything in Essential",
-        "Specialty drink options",
-        "Premium equipment setup",
-        "Branded coffee cups",
-        "Service up to 4 hours",
-        "Light refreshments",
+        "Todo lo incluido en Esencial",
+        "Opciones de bebidas especiales",
+        "Configuración de equipos premium",
+        "Tazas de café con marca",
+        "Servicio hasta 4 horas",
+        "Refrigerios ligeros",
       ],
-      bestFor: "Corporate events and conferences",
+      bestFor: "Eventos corporativos y conferencias",
       minGuests: 25,
       popular: true,
     },
     {
       name: "Premium",
-      price: "Starting at $18/person",
+      price: "Desde $18/persona",
       features: [
-        "Everything in Professional",
-        "Full coffee bar experience",
-        "Custom drink menu",
-        "Professional setup design",
-        "Full-day service",
-        "Gourmet pastries included",
-        "Dedicated event coordinator",
+        "Todo lo incluido en Profesional",
+        "Experiencia completa de coffee bar",
+        "Menú de bebidas personalizado",
+        "Diseño profesional de configuración",
+        "Servicio de día completo",
+        "Pasteles gourmet incluidos",
+        "Coordinador de eventos dedicado",
       ],
-      bestFor: "Large corporate events and VIP meetings",
+      bestFor: "Eventos corporativos grandes y reuniones VIP",
       minGuests: 50,
     },
   ];
@@ -121,19 +121,19 @@ const Events = () => {
     {
       name: "Sarah Johnson",
       company: "TechCorp Solutions",
-      text: "The coffee service at our annual conference was exceptional. Our attendees couldn't stop talking about the quality!",
+      text: "El servicio de café en nuestra conferencia anual fue excepcional. ¡Nuestros asistentes no paraban de hablar sobre la calidad!",
       rating: 5,
     },
     {
       name: "Michael Chen",
       company: "Design Studio Pro",
-      text: "Professional, punctual, and the coffee was amazing. Made our client meeting much more memorable.",
+      text: "Profesionales, puntuales y el café estuvo increíble. Hizo que nuestra reunión con clientes fuera mucho más memorable.",
       rating: 5,
     },
     {
-      name: "Emily Rodriguez",
+      name: "Emily Rodríguez",
       company: "Marketing Plus",
-      text: "We've used thiscoffee for multiple events now. They always exceed our expectations with their service.",
+      text: "Hemos usado thiscoffee para múltiples eventos ahora. Siempre superan nuestras expectativas con su servicio.",
       rating: 5,
     },
   ];
@@ -144,11 +144,14 @@ const Events = () => {
       <div className="bg-coffee-brown text-coffee-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Corporate Coffee Events</h1>
+            <h1 className="text-4xl font-bold mb-4">
+              Eventos Corporativos de Café
+            </h1>
             <p className="text-lg text-coffee-cream/90 max-w-3xl mx-auto">
-              Elevate your corporate events with professional coffee catering
-              services. From intimate meetings to large conferences, we bring
-              the café experience directly to your venue.
+              Eleva tus eventos corporativos con servicios profesionales de
+              catering de café. Desde reuniones íntimas hasta grandes
+              conferencias, llevamos la experiencia de cafetería directamente a
+              tu venue.
             </p>
           </div>
         </div>
@@ -159,11 +162,11 @@ const Events = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-coffee-dark mb-4">
-              Why Choose Our Coffee Catering?
+              ¿Por Qué Elegir Nuestro Catering de Café?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We provide comprehensive coffee solutions that enhance your
-              corporate events and leave lasting impressions.
+              Ofrecemos soluciones integrales de café que mejoran tus eventos
+              corporativos y dejan impresiones duraderas.
             </p>
           </div>
 
@@ -173,11 +176,11 @@ const Events = () => {
                 <Coffee className="h-8 w-8 text-coffee-green" />
               </div>
               <h3 className="text-lg font-semibold text-coffee-dark mb-2">
-                Premium Quality
+                Calidad Premium
               </h3>
               <p className="text-gray-600 text-sm">
-                Finest coffee beans and professional brewing equipment for
-                exceptional taste.
+                Los mejores granos de café y equipos de preparación profesional
+                para un sabor excepcional.
               </p>
             </div>
 
@@ -186,11 +189,11 @@ const Events = () => {
                 <Users className="h-8 w-8 text-coffee-green" />
               </div>
               <h3 className="text-lg font-semibold text-coffee-dark mb-2">
-                Expert Baristas
+                Baristas Expertos
               </h3>
               <p className="text-gray-600 text-sm">
-                Certified professionals who create memorable coffee experiences
-                for your guests.
+                Profesionales certificados que crean experiencias memorables de
+                café para tus invitados.
               </p>
             </div>
 
@@ -199,11 +202,11 @@ const Events = () => {
                 <Clock className="h-8 w-8 text-coffee-green" />
               </div>
               <h3 className="text-lg font-semibold text-coffee-dark mb-2">
-                Flexible Timing
+                Horarios Flexibles
               </h3>
               <p className="text-gray-600 text-sm">
-                From quick coffee breaks to full-day service, we adapt to your
-                event schedule.
+                Desde descansos rápidos de café hasta servicio de día completo,
+                nos adaptamos al horario de tu evento.
               </p>
             </div>
 
@@ -212,11 +215,11 @@ const Events = () => {
                 <CheckCircle className="h-8 w-8 text-coffee-green" />
               </div>
               <h3 className="text-lg font-semibold text-coffee-dark mb-2">
-                Hassle-Free Setup
+                Configuración Sin Complicaciones
               </h3>
               <p className="text-gray-600 text-sm">
-                Complete setup and cleanup included. Focus on your event while
-                we handle the coffee.
+                Configuración y limpieza completa incluida. Enfócate en tu
+                evento mientras nosotros manejamos el café.
               </p>
             </div>
           </div>
@@ -228,11 +231,12 @@ const Events = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-coffee-dark mb-4">
-              Event Packages
+              Paquetes de Eventos
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose the perfect package for your event size and requirements.
-              All packages include professional service and cleanup.
+              Elige el paquete perfecto para el tamaño de tu evento y
+              requerimientos. Todos los paquetes incluyen servicio profesional y
+              limpieza.
             </p>
           </div>
 
@@ -245,7 +249,7 @@ const Events = () => {
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <span className="bg-coffee-green text-coffee-dark px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
+                      Más Popular
                     </span>
                   </div>
                 )}
@@ -258,7 +262,7 @@ const Events = () => {
                     {pkg.price}
                   </div>
                   <p className="text-sm text-gray-600">
-                    Minimum {pkg.minGuests} guests
+                    Mínimo {pkg.minGuests} invitados
                   </p>
                 </CardHeader>
 
@@ -274,7 +278,7 @@ const Events = () => {
 
                   <div className="border-t pt-4">
                     <p className="text-sm text-gray-600 mb-4">
-                      <strong>Best for:</strong> {pkg.bestFor}
+                      <strong>Ideal para:</strong> {pkg.bestFor}
                     </p>
 
                     <Button
@@ -284,7 +288,7 @@ const Events = () => {
                           : "bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
                       }`}
                     >
-                      Select Package
+                      Seleccionar Paquete
                     </Button>
                   </div>
                 </CardContent>
@@ -299,11 +303,11 @@ const Events = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-coffee-dark mb-4">
-              Book Your Event
+              Reserva tu Evento
             </h2>
             <p className="text-lg text-gray-600">
-              Tell us about your event and we'll create a customized coffee
-              experience for you.
+              Cuéntanos sobre tu evento y crearemos una experiencia de café
+              personalizada para ti.
             </p>
           </div>
 
@@ -312,14 +316,14 @@ const Events = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="eventType">Event Type</Label>
+                    <Label htmlFor="eventType">Tipo de Evento</Label>
                     <Select
                       onValueChange={(value) =>
                         handleSelectChange("eventType", value)
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select event type" />
+                        <SelectValue placeholder="Seleccionar tipo de evento" />
                       </SelectTrigger>
                       <SelectContent>
                         {eventTypes.map((type) => (
@@ -332,12 +336,12 @@ const Events = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="attendees">Expected Attendees</Label>
+                    <Label htmlFor="attendees">Asistentes Esperados</Label>
                     <Input
                       id="attendees"
                       name="attendees"
                       type="number"
-                      placeholder="Number of guests"
+                      placeholder="Número de invitados"
                       value={formData.attendees}
                       onChange={handleInputChange}
                       required
@@ -345,7 +349,7 @@ const Events = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="date">Event Date</Label>
+                    <Label htmlFor="date">Fecha del Evento</Label>
                     <Input
                       id="date"
                       name="date"
@@ -357,31 +361,33 @@ const Events = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="duration">Duration</Label>
+                    <Label htmlFor="duration">Duración</Label>
                     <Select
                       onValueChange={(value) =>
                         handleSelectChange("duration", value)
                       }
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Event duration" />
+                        <SelectValue placeholder="Duración del evento" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="1-2 hours">1-2 hours</SelectItem>
-                        <SelectItem value="2-4 hours">2-4 hours</SelectItem>
-                        <SelectItem value="4-6 hours">4-6 hours</SelectItem>
-                        <SelectItem value="Full day">Full day</SelectItem>
+                        <SelectItem value="1-2 horas">1-2 horas</SelectItem>
+                        <SelectItem value="2-4 horas">2-4 horas</SelectItem>
+                        <SelectItem value="4-6 horas">4-6 horas</SelectItem>
+                        <SelectItem value="Día completo">
+                          Día completo
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="location">Event Location</Label>
+                  <Label htmlFor="location">Ubicación del Evento</Label>
                   <Input
                     id="location"
                     name="location"
-                    placeholder="Venue address or name"
+                    placeholder="Dirección o nombre del venue"
                     value={formData.location}
                     onChange={handleInputChange}
                     required
@@ -390,11 +396,11 @@ const Events = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="name">Contact Name</Label>
+                    <Label htmlFor="name">Nombre de Contacto</Label>
                     <Input
                       id="name"
                       name="name"
-                      placeholder="Your full name"
+                      placeholder="Tu nombre completo"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
@@ -402,11 +408,11 @@ const Events = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="company">Company</Label>
+                    <Label htmlFor="company">Empresa</Label>
                     <Input
                       id="company"
                       name="company"
-                      placeholder="Company name"
+                      placeholder="Nombre de la empresa"
                       value={formData.company}
                       onChange={handleInputChange}
                     />
@@ -418,7 +424,7 @@ const Events = () => {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="tu@email.com"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
@@ -426,7 +432,7 @@ const Events = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="phone">Phone</Label>
+                    <Label htmlFor="phone">Teléfono</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -439,11 +445,11 @@ const Events = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Additional Details</Label>
+                  <Label htmlFor="message">Detalles Adicionales</Label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder="Tell us about any special requirements, dietary restrictions, or preferences..."
+                    placeholder="Cuéntanos sobre cualquier requerimiento especial, restricciones dietéticas o preferencias..."
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
@@ -455,7 +461,7 @@ const Events = () => {
                   size="lg"
                   className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
                 >
-                  Request Quote
+                  Solicitar Cotización
                 </Button>
               </form>
             </CardContent>
@@ -468,7 +474,7 @@ const Events = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-coffee-dark mb-4">
-              What Our Clients Say
+              Lo Que Dicen Nuestros Clientes
             </h2>
           </div>
 
@@ -505,20 +511,22 @@ const Events = () => {
       {/* Contact Info */}
       <section className="py-16 bg-coffee-dark text-coffee-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Event?</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            ¿Listo para Planificar tu Evento?
+          </h2>
           <p className="text-lg text-coffee-cream/80 mb-8">
-            Have questions or need immediate assistance? Our event specialists
-            are here to help.
+            ¿Tienes preguntas o necesitas asistencia inmediata? Nuestros
+            especialistas en eventos están aquí para ayudar.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <div className="flex items-center space-x-3">
               <Phone className="h-5 w-5 text-coffee-green" />
-              <span className="text-lg">(555) 123-COFFEE</span>
+              <span className="text-lg">(555) 123-CAFÉ</span>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="h-5 w-5 text-coffee-green" />
-              <span className="text-lg">events@thiscoffee.com</span>
+              <span className="text-lg">eventos@thiscoffee.com</span>
             </div>
           </div>
         </div>
