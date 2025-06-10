@@ -24,9 +24,9 @@ const Footer = () => {
               />
             </div>
             <p className="text-coffee-cream/80 mb-6 max-w-md">
-              Your premier destination for exceptional coffee experiences. From
-              carefully sourced beans to unforgettable corporate events, we
-              bring the art of coffee to life.
+              Tu destino principal para experiencias excepcionales de café.
+              Desde granos cuidadosamente seleccionados hasta eventos
+              corporativos inolvidables, damos vida al arte del café.
             </p>
             <div className="flex space-x-4">
               <a
@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-coffee-green">
-              Quick Links
+              Enlaces Rápidos
             </h3>
             <ul className="space-y-3">
               <li>
@@ -61,7 +61,7 @@ const Footer = () => {
                   to="/shop"
                   className="text-coffee-cream/80 hover:text-coffee-green transition-colors"
                 >
-                  Coffee Shop
+                  Tienda de Café
                 </Link>
               </li>
               <li>
@@ -69,7 +69,7 @@ const Footer = () => {
                   to="/blog"
                   className="text-coffee-cream/80 hover:text-coffee-green transition-colors"
                 >
-                  Blog & Recipes
+                  Blog y Recetas
                 </Link>
               </li>
               <li>
@@ -77,7 +77,7 @@ const Footer = () => {
                   to="/events"
                   className="text-coffee-cream/80 hover:text-coffee-green transition-colors"
                 >
-                  Corporate Events
+                  Eventos Corporativos
                 </Link>
               </li>
               <li>
@@ -85,7 +85,7 @@ const Footer = () => {
                   to="/about"
                   className="text-coffee-cream/80 hover:text-coffee-green transition-colors"
                 >
-                  About Us
+                  Nosotros
                 </Link>
               </li>
             </ul>
@@ -94,25 +94,25 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-coffee-green">
-              Contact
+              Contacto
             </h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-coffee-green flex-shrink-0" />
                 <span className="text-coffee-cream/80 text-sm">
-                  123 Coffee Street, Bean City, BC 12345
+                  Calle Café 123, Ciudad del Grano, CG 12345
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-coffee-green flex-shrink-0" />
                 <span className="text-coffee-cream/80 text-sm">
-                  (555) 123-COFFEE
+                  (555) 123-CAFÉ
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-coffee-green flex-shrink-0" />
                 <span className="text-coffee-cream/80 text-sm">
-                  hello@thiscoffee.com
+                  hola@thiscoffee.com
                 </span>
               </li>
             </ul>
@@ -122,20 +122,20 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-coffee-cream/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-coffee-cream/60 text-sm">
-            © 2024 thiscoffee. All rights reserved.
+            © 2024 thiscoffee. Todos los derechos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
               className="text-coffee-cream/60 hover:text-coffee-green text-sm transition-colors"
             >
-              Privacy Policy
+              Política de Privacidad
             </a>
             <a
               href="#"
               className="text-coffee-cream/60 hover:text-coffee-green text-sm transition-colors"
             >
-              Terms of Service
+              Términos de Servicio
             </a>
           </div>
         </div>
