@@ -29,7 +29,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Revuelve suavemente y añade endulzante si lo deseas",
       "Sirve inmediatamente mientras esté caliente",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "hot",
   },
   {
@@ -53,7 +54,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Vierte en un vaso y corona con crema batida",
       "Sirve con una pajita",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "cold",
   },
   {
@@ -76,7 +78,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Corona con espuma de leche",
       "Rocía salsa de caramelo encima en un patrón decorativo",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "specialty",
   },
   {
@@ -98,7 +101,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Cuela a través de un colador fino o filtro de café",
       "Sirve sobre hielo con leche si lo deseas",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "cold",
   },
   {
@@ -121,7 +125,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Regresa al fuego y repite 2-3 veces",
       "Vierte en tazas pequeñas, incluyendo los posos",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "specialty",
   },
   {
@@ -144,7 +149,8 @@ export const coffeeIdeas: CoffeeIdea[] = [
       "Coloca la espuma encima con una cuchara para crear una capa gruesa",
       "Espolvorea con cacao en polvo si lo deseas",
     ],
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "hot",
   },
 ];

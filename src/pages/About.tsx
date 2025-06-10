@@ -9,25 +9,29 @@ const About = () => {
       name: "Elena Rodríguez",
       role: "Fundadora y Maestra Tostadora",
       bio: "Con más de 15 años en la industria del café, Elena fundó thiscoffee con la visión de llevar experiencias excepcionales de café a todos.",
-      image: "/placeholder.svg",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     },
     {
       name: "Marcus Chen",
       role: "Director de Sourcing de Café",
       bio: "Marcus viaja por el mundo para construir relaciones con caficultores y obtener los mejores granos directamente del origen.",
-      image: "/placeholder.svg",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     },
     {
       name: "Sarah Williams",
       role: "Gerente de Eventos Corporativos",
       bio: "Sarah se especializa en crear experiencias memorables de café para clientes corporativos, gestionando eventos de todos los tamaños.",
-      image: "/placeholder.svg",
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b5e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     },
     {
       name: "David Thompson",
       role: "Barista Principal y Entrenador",
       bio: "David lidera nuestros programas de entrenamiento de baristas y asegura que cada taza cumpla con nuestros estándares exigentes de calidad.",
-      image: "/placeholder.svg",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     },
   ];
 
@@ -152,7 +156,7 @@ const About = () => {
 
             <div className="relative">
               <img
-                src="/placeholder.svg"
+                src="https://images.unsplash.com/photo-1587734195503-904fca47e0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 alt="Proceso de tostado de café"
                 className="rounded-lg shadow-lg w-full h-96 object-cover"
               />

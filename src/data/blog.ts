@@ -20,7 +20,8 @@ export const blogPosts: BlogPost[] = [
       "El café pour-over es más que un método de preparación—es una forma de arte que te permite controlar cada variable en tu proceso de preparación de café...",
     author: "Sarah Martínez",
     publishedAt: "2024-01-15",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "brewing",
     featured: true,
   },
@@ -32,7 +33,8 @@ export const blogPosts: BlogPost[] = [
       "Etiopía es ampliamente considerada la cuna del café, y sus granos ofrecen algunos de los perfiles de sabor más complejos y únicos del mundo...",
     author: "David Chen",
     publishedAt: "2024-01-12",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "origins",
     featured: true,
   },
@@ -45,7 +47,8 @@ export const blogPosts: BlogPost[] = [
       "Los cócteles de café son la manera perfecta de agregar sofisticación a cualquier evento corporativo. Aquí tienes cinco recetas creativas que impresionarán a tus invitados...",
     author: "Emma Rodríguez",
     publishedAt: "2024-01-10",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "recipes",
     featured: true,
   },
@@ -58,7 +61,8 @@ export const blogPosts: BlogPost[] = [
       "Muchas personas usan los términos cold brew y café helado indistintamente, pero en realidad son bastante diferentes en preparación y sabor...",
     author: "Michael Torres",
     publishedAt: "2024-01-08",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "tips",
   },
   {
@@ -70,7 +74,8 @@ export const blogPosts: BlogPost[] = [
       "El servicio de café correcto puede hacer o deshacer un evento corporativo. Aquí está todo lo que necesitas saber sobre elegir el catering de café perfecto...",
     author: "Lisa Johnson",
     publishedAt: "2024-01-05",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "events",
   },
   {
@@ -82,7 +87,8 @@ export const blogPosts: BlogPost[] = [
       "El tostado de café es un proceso químico complejo que transforma los granos verdes en los granos aromáticos y sabrosos que conocemos y amamos...",
     author: "Roberto Kim",
     publishedAt: "2024-01-03",
-    image: "/placeholder.svg",
+    image:
+      "https://images.unsplash.com/photo-1587734195503-904fca47e0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     category: "tips",
   },
 ];
