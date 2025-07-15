@@ -51,8 +51,8 @@ const Home = () => {
               size="lg"
               className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
             >
-              <Link to="/shop" className="flex items-center space-x-2">
-                <span>Ver Todos los Productos</span>
+              <Link to="/sponsors" className="flex items-center space-x-2">
+                <span>Ver Patrocinadores</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -161,7 +161,7 @@ const Home = () => {
               />
               <div className="absolute -bottom-6 -left-6 bg-coffee-cream p-6 rounded-lg shadow-lg border border-coffee-brown/10">
                 <div className="text-coffee-brown font-semibold">
-                  Próxima Disponibilidad
+                  Pr��xima Disponibilidad
                 </div>
                 <div className="text-coffee-green text-lg font-bold">
                   Esta Semana

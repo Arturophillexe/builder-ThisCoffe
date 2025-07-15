@@ -47,9 +47,9 @@ const NotFound = () => {
             variant="outline"
             className="border-coffee-brown text-coffee-brown hover:bg-coffee-brown hover:text-coffee-cream"
           >
-            <Link to="/shop" className="flex items-center space-x-2">
+            <Link to="/sponsors" className="flex items-center space-x-2">
               <Coffee className="h-4 w-4" />
-              <span>Explorar Café</span>
+              <span>Ver Patrocinadores</span>
             </Link>
           </Button>
         </div>

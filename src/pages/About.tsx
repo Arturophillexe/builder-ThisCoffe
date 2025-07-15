@@ -353,7 +353,7 @@ const About = () => {
               size="lg"
               className="border-coffee-brown text-coffee-brown hover:bg-coffee-brown hover:text-coffee-cream"
             >
-              <Link to="/shop">Comprar Café</Link>
+              <Link to="/sponsors">Ver Patrocinadores</Link>
             </Button>
           </div>
         </div>

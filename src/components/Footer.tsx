@@ -58,10 +58,10 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/shop"
+                  to="/sponsors"
                   className="text-coffee-cream/80 hover:text-coffee-green transition-colors"
                 >
-                  Tienda de Café
+                  Patrocinadores
                 </Link>
               </li>
               <li>

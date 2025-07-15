@@ -47,9 +47,9 @@ const Hero = () => {
                 asChild
                 className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
               >
-                <Link to="/shop" className="flex items-center space-x-2">
+                <Link to="/sponsors" className="flex items-center space-x-2">
                   <Coffee className="h-5 w-5" />
-                  <span>Comprar Café</span>
+                  <span>Ver Patrocinadores</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
