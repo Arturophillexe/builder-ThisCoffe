@@ -9,6 +9,8 @@ import {
   CheckCircle,
   Phone,
   Mail,
+  CreditCard,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +24,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Events = () => {
   const [formData, setFormData] = useState({
@@ -37,11 +47,28 @@ const Events = () => {
     message: "",
   });
 
+  const [showQuotePopup, setShowQuotePopup] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  const [paymentData, setPaymentData] = useState({
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+    cardName: "",
+  });
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlePaymentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPaymentData({
+      ...paymentData,
       [e.target.name]: e.target.value,
     });
   };
@@ -55,8 +82,25 @@ const Events = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setShowQuotePopup(true);
+  };
+
+  const handlePackageSelect = (pkg: any) => {
+    setSelectedPackage(pkg);
+    setShowPaymentModal(true);
+  };
+
+  const handlePaymentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulación de procesamiento de pago
+    alert("¡Pago procesado exitosamente! Recibirás confirmación por correo.");
+    setShowPaymentModal(false);
+    setPaymentData({
+      cardNumber: "",
+      expiryDate: "",
+      cvv: "",
+      cardName: "",
+    });
   };
 
   const eventTypes = [
@@ -75,6 +119,7 @@ const Events = () => {
     {
       name: "Esencial",
       price: "Desde $8/persona",
+      priceValue: 8,
       features: [
         "Servicio de barista profesional",
         "Selección de café premium",
@@ -88,6 +133,7 @@ const Events = () => {
     {
       name: "Profesional",
       price: "Desde $12/persona",
+      priceValue: 12,
       features: [
         "Todo lo incluido en Esencial",
         "Opciones de bebidas especiales",
@@ -103,6 +149,7 @@ const Events = () => {
     {
       name: "Premium",
       price: "Desde $18/persona",
+      priceValue: 18,
       features: [
         "Todo lo incluido en Profesional",
         "Experiencia completa de coffee bar",
@@ -282,12 +329,14 @@ const Events = () => {
                     </p>
 
                     <Button
+                      onClick={() => handlePackageSelect(pkg)}
                       className={`w-full ${
                         pkg.popular
                           ? "bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
                           : "bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
                       }`}
                     >
+                      <CreditCard className="h-4 w-4 mr-2" />
                       Seleccionar Paquete
                     </Button>
                   </div>
@@ -531,6 +580,135 @@ const Events = () => {
           </div>
         </div>
       </section>
+
+      {/* Quote Popup */}
+      {showQuotePopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-md mx-4">
+            <div className="text-center">
+              <div className="bg-coffee-green/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="h-8 w-8 text-coffee-green" />
+              </div>
+              <h3 className="text-2xl font-bold text-coffee-dark mb-4">
+                ¡Solicitud Enviada!
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Hemos recibido tu solicitud de cotización. Te enviaremos una
+                propuesta detallada a tu correo electrónico en las próximas 24
+                horas.
+              </p>
+              <Button
+                onClick={() => setShowQuotePopup(false)}
+                className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
+              >
+                Entendido
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Modal */}
+      {showPaymentModal && selectedPackage && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-coffee-dark">
+                  Pagar Paquete {selectedPackage.name}
+                </h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowPaymentModal(false)}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="bg-coffee-cream/30 p-4 rounded-lg mb-6">
+                <h4 className="font-semibold text-coffee-dark mb-2">
+                  Resumen del Paquete
+                </h4>
+                <p className="text-sm text-gray-600 mb-2">
+                  {selectedPackage.name} - {selectedPackage.price}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {selectedPackage.bestFor}
+                </p>
+              </div>
+
+              <form onSubmit={handlePaymentSubmit} className="space-y-4">
+                <div>
+                  <Label htmlFor="cardName">Nombre en la Tarjeta</Label>
+                  <Input
+                    id="cardName"
+                    name="cardName"
+                    placeholder="Juan Pérez"
+                    value={paymentData.cardName}
+                    onChange={handlePaymentInputChange}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="cardNumber">Número de Tarjeta</Label>
+                  <Input
+                    id="cardNumber"
+                    name="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    value={paymentData.cardNumber}
+                    onChange={handlePaymentInputChange}
+                    maxLength={19}
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="expiryDate">Fecha de Vencimiento</Label>
+                    <Input
+                      id="expiryDate"
+                      name="expiryDate"
+                      placeholder="MM/AA"
+                      value={paymentData.expiryDate}
+                      onChange={handlePaymentInputChange}
+                      maxLength={5}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="cvv">CVV</Label>
+                    <Input
+                      id="cvv"
+                      name="cvv"
+                      placeholder="123"
+                      value={paymentData.cvv}
+                      onChange={handlePaymentInputChange}
+                      maxLength={4}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Button
+                    type="submit"
+                    className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
+                  >
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Procesar Pago
+                  </Button>
+                </div>
+              </form>
+
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                Transacción segura protegida por SSL
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
