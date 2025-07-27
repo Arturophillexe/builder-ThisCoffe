@@ -13,9 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { register } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,24 +53,26 @@ const Signup = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden");
+      toast.error("Las contraseñas no coinciden");
       return;
     }
 
     if (!formData.agreeToTerms) {
-      alert("Por favor acepta los términos y condiciones");
+      toast.error("Por favor acepta los términos y condiciones");
       return;
     }
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Signup attempt:", formData);
+    try {
+      await register(formData);
+      toast.success("¡Registro exitoso! Bienvenido a thiscoffee");
+      navigate("/");
+    } catch (error: any) {
+      toast.error(error.message || "Error al registrar usuario");
+    } finally {
       setIsLoading(false);
-      // In a real app, you'd handle the registration here
-      navigate("/login");
-    }, 2000);
+    }
   };
 
   const roles = [

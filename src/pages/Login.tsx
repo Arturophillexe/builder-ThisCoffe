@@ -6,9 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -29,13 +32,15 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Login attempt:", formData);
-      setIsLoading(false);
-      // In a real app, you'd handle the authentication here
+    try {
+      await login(formData.email, formData.password);
+      toast.success("¡Inicio de sesión exitoso!");
       navigate("/");
-    }, 1500);
+    } catch (error: any) {
+      toast.error(error.message || "Error al iniciar sesión");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
