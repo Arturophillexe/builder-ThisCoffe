@@ -54,12 +54,7 @@ const Events = () => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [paymentData, setPaymentData] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    cardName: "",
-  });
+  const [attendeeCount, setAttendeeCount] = useState(10);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -70,11 +65,9 @@ const Events = () => {
     });
   };
 
-  const handlePaymentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentData({
-      ...paymentData,
-      [e.target.name]: e.target.value,
-    });
+  const calculatePaymentAmount = () => {
+    if (!selectedPackage) return "0";
+    return (selectedPackage.priceValue * attendeeCount).toFixed(2);
   };
 
   const handleSelectChange = (name: string, value: string) => {
@@ -116,17 +109,22 @@ const Events = () => {
     setShowPaymentModal(true);
   };
 
-  const handlePaymentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulación de procesamiento de pago
-    alert("¡Pago procesado exitosamente! Recibirás confirmación por correo.");
+  const handlePayPalSuccess = (details: any) => {
+    toast.success(
+      `¡Pago procesado exitosamente! ID de transacción: ${details.id}. Recibirás confirmación por correo.`,
+    );
     setShowPaymentModal(false);
-    setPaymentData({
-      cardNumber: "",
-      expiryDate: "",
-      cvv: "",
-      cardName: "",
-    });
+    setSelectedPackage(null);
+    setAttendeeCount(10);
+  };
+
+  const handlePayPalError = (err: any) => {
+    console.error("Error en PayPal:", err);
+    toast.error("Error al procesar el pago. Por favor intenta nuevamente.");
+  };
+
+  const handlePayPalCancel = () => {
+    toast.info("Pago cancelado por el usuario.");
   };
 
   const eventTypes = [
