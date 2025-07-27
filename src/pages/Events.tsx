@@ -12,6 +12,7 @@ import {
   CreditCard,
   X,
 } from "lucide-react";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { eventosAPI } from "@/services/api";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
