@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { CoffeeProduct } from "@/data/products";
+import { CoffeeProduct } from '@/data/products';
 
 // Define the CartItem type by extending CoffeeProduct
 interface CartItem extends CoffeeProduct {
@@ -12,6 +12,8 @@ interface CartContextType {
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   getTotalPrice: () => number;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>; // setCartItems is already defined
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -63,14 +65,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, getTotalPrice }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, getTotalPrice, setCartItems, clearCart }} // Added setCartItems
     >
       {children}
     </CartContext.Provider>
   );
-}; 
+};
 
 export const useCart = () => {
   const context = useContext(CartContext);
