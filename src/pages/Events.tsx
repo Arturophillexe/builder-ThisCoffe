@@ -12,6 +12,8 @@ import {
   CreditCard,
   X,
 } from "lucide-react";
+import { eventosAPI } from "@/services/api";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -50,6 +52,7 @@ const Events = () => {
   const [showQuotePopup, setShowQuotePopup] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [paymentData, setPaymentData] = useState({
     cardNumber: "",
     expiryDate: "",
@@ -80,9 +83,31 @@ const Events = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowQuotePopup(true);
+    setIsLoading(true);
+
+    try {
+      await eventosAPI.crear(formData);
+      setShowQuotePopup(true);
+      // Limpiar formulario después del envío exitoso
+      setFormData({
+        eventType: "",
+        attendees: "",
+        date: "",
+        duration: "",
+        location: "",
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (error: any) {
+      toast.error(error.message || "Error al enviar solicitud");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handlePackageSelect = (pkg: any) => {
@@ -508,9 +533,17 @@ const Events = () => {
                 <Button
                   type="submit"
                   size="lg"
+                  disabled={isLoading}
                   className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
                 >
-                  Solicitar Cotización
+                  {isLoading ? (
+                    <div className="flex items-center space-x-2">
+                      <Coffee className="h-4 w-4 animate-spin" />
+                      <span>Enviando solicitud...</span>
+                    </div>
+                  ) : (
+                    "Solicitar Cotización"
+                  )}
                 </Button>
               </form>
             </CardContent>
