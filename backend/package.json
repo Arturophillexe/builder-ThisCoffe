@@ -19,7 +19,12 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "keywords": ["coffee", "events", "api", "corporate"],
+  "keywords": [
+    "coffee",
+    "events",
+    "api",
+    "corporate"
+  ],
   "author": "thiscoffee team",
   "license": "MIT"
 }

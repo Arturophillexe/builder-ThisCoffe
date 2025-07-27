@@ -1,5 +1,11 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { usuariosAPI } from '@/services/api';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { usuariosAPI } from "@/services/api";
 
 interface User {
   id: string;
@@ -28,7 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Verificar si hay token guardado al cargar la app
-    const savedToken = localStorage.getItem('token');
+    const savedToken = localStorage.getItem("token");
     if (savedToken) {
       setToken(savedToken);
       loadUserProfile();
@@ -42,7 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await usuariosAPI.obtenerPerfil();
       setUser(response);
     } catch (error) {
-      console.error('Error al cargar perfil:', error);
+      console.error("Error al cargar perfil:", error);
       logout();
     } finally {
       setLoading(false);
@@ -53,12 +59,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await usuariosAPI.login({ email, password });
       const { token: newToken, usuario } = response;
-      
+
       setToken(newToken);
       setUser(usuario);
-      localStorage.setItem('token', newToken);
+      localStorage.setItem("token", newToken);
     } catch (error) {
-      console.error('Error en login:', error);
+      console.error("Error en login:", error);
       throw error;
     }
   };
@@ -67,12 +73,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await usuariosAPI.registrar(userData);
       const { token: newToken, usuario } = response;
-      
+
       setToken(newToken);
       setUser(usuario);
-      localStorage.setItem('token', newToken);
+      localStorage.setItem("token", newToken);
     } catch (error) {
-      console.error('Error en registro:', error);
+      console.error("Error en registro:", error);
       throw error;
     }
   };
@@ -80,7 +86,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   };
 
   return (
@@ -95,7 +101,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

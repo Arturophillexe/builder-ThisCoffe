@@ -1,50 +1,53 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const EventoSchema = new mongoose.Schema({
+const EventoSchema = new mongoose.Schema(
+  {
     eventType: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     attendees: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     date: {
-        type: Date,
-        required: true
+      type: Date,
+      required: true,
     },
     duration: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     location: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     phone: {
-        type: String
+      type: String,
     },
     company: {
-        type: String
+      type: String,
     },
     message: {
-        type: String
+      type: String,
     },
     status: {
-        type: String,
-        enum: ['pending', 'confirmed', 'cancelled'],
-        default: 'pending'
-    }
-}, {
-    timestamps: true
-});
+      type: String,
+      enum: ["pending", "confirmed", "cancelled"],
+      default: "pending",
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
-module.exports = mongoose.model('Evento', EventoSchema);
+module.exports = mongoose.model("Evento", EventoSchema);

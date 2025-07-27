@@ -1,15 +1,15 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = "http://localhost:5000/api";
 
 // Configuración base para fetch
 const apiConfig = {
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
 // Helper para obtener token del localStorage
 const getAuthToken = () => {
-  return localStorage.getItem('token');
+  return localStorage.getItem("token");
 };
 
 // Helper para requests autenticados
@@ -24,7 +24,9 @@ const getAuthHeaders = () => {
 // Helper para manejar respuestas
 const handleResponse = async (response: Response) => {
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ error: 'Error desconocido' }));
+    const error = await response
+      .json()
+      .catch(() => ({ error: "Error desconocido" }));
     throw new Error(error.error || `HTTP error! status: ${response.status}`);
   }
   return response.json();
@@ -35,7 +37,7 @@ export const eventosAPI = {
   // Crear nuevo evento
   crear: async (eventoData: any) => {
     const response = await fetch(`${API_BASE_URL}/eventos`, {
-      method: 'POST',
+      method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(eventoData),
     });
@@ -61,7 +63,7 @@ export const eventosAPI = {
   // Actualizar evento
   actualizar: async (id: string, eventoData: any) => {
     const response = await fetch(`${API_BASE_URL}/eventos/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: getAuthHeaders(),
       body: JSON.stringify(eventoData),
     });
@@ -74,7 +76,7 @@ export const usuariosAPI = {
   // Registrar usuario
   registrar: async (userData: any) => {
     const response = await fetch(`${API_BASE_URL}/users/register`, {
-      method: 'POST',
+      method: "POST",
       headers: apiConfig.headers,
       body: JSON.stringify(userData),
     });
@@ -84,7 +86,7 @@ export const usuariosAPI = {
   // Login usuario
   login: async (credentials: { email: string; password: string }) => {
     const response = await fetch(`${API_BASE_URL}/users/login`, {
-      method: 'POST',
+      method: "POST",
       headers: apiConfig.headers,
       body: JSON.stringify(credentials),
     });

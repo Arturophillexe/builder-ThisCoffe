@@ -5,6 +5,7 @@ API REST para el sistema de gestión de eventos corporativos y usuarios de thisc
 ## 🚀 Inicio Rápido
 
 ### Prerrequisitos
+
 - Node.js (v16 o superior)
 - MongoDB (local o remoto)
 - npm o yarn
@@ -12,33 +13,37 @@ API REST para el sistema de gestión de eventos corporativos y usuarios de thisc
 ### Instalación
 
 1. **Instalar dependencias:**
+
    ```bash
    npm install
    ```
 
 2. **Configurar variables de entorno:**
+
    ```bash
    cp .env.example .env
    # Editar .env con tus configuraciones
    ```
 
 3. **Iniciar MongoDB:**
+
    ```bash
    # En Ubuntu/Debian:
    sudo systemctl start mongod
-   
+
    # En macOS con Homebrew:
    brew services start mongodb-community
-   
+
    # O usar Docker:
    docker run -d -p 27017:27017 --name mongodb mongo
    ```
 
 4. **Iniciar el servidor:**
+
    ```bash
    # Desarrollo (con recarga automática)
    npm run dev
-   
+
    # Producción
    npm start
    ```
@@ -47,34 +52,35 @@ API REST para el sistema de gestión de eventos corporativos y usuarios de thisc
 
 ### 🔐 Autenticación
 
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| POST | `/api/users/register` | Registrar nuevo usuario |
-| POST | `/api/users/login` | Iniciar sesión |
-| GET | `/api/users/profile` | Obtener perfil (requiere auth) |
+| Método | Endpoint              | Descripción                    |
+| ------ | --------------------- | ------------------------------ |
+| POST   | `/api/users/register` | Registrar nuevo usuario        |
+| POST   | `/api/users/login`    | Iniciar sesión                 |
+| GET    | `/api/users/profile`  | Obtener perfil (requiere auth) |
 
 ### 📅 Eventos
 
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| POST | `/api/eventos` | Crear nuevo evento |
-| GET | `/api/eventos` | Obtener todos los eventos |
-| GET | `/api/eventos/:id` | Obtener evento por ID |
-| PUT | `/api/eventos/:id` | Actualizar evento |
+| Método | Endpoint           | Descripción               |
+| ------ | ------------------ | ------------------------- |
+| POST   | `/api/eventos`     | Crear nuevo evento        |
+| GET    | `/api/eventos`     | Obtener todos los eventos |
+| GET    | `/api/eventos/:id` | Obtener evento por ID     |
+| PUT    | `/api/eventos/:id` | Actualizar evento         |
 
 ### 🧪 Testing
 
-| Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| GET | `/api/test` | Verificar conexión del servidor |
+| Método | Endpoint    | Descripción                     |
+| ------ | ----------- | ------------------------------- |
+| GET    | `/api/test` | Verificar conexión del servidor |
 
 ## 📋 Esquemas de Datos
 
 ### Usuario
+
 ```json
 {
   "firstName": "string",
-  "lastName": "string", 
+  "lastName": "string",
   "email": "string (único)",
   "company": "string (opcional)",
   "role": "string",
@@ -85,6 +91,7 @@ API REST para el sistema de gestión de eventos corporativos y usuarios de thisc
 ```
 
 ### Evento
+
 ```json
 {
   "eventType": "string",
@@ -114,6 +121,7 @@ API REST para el sistema de gestión de eventos corporativos y usuarios de thisc
 ## 🔧 Configuración
 
 ### Variables de Entorno (.env)
+
 ```
 MONGO_URI=mongodb://localhost:27017/thiscoffee
 PORT=5000
@@ -137,6 +145,7 @@ backend/
 ## 🚨 Solución de Problemas
 
 ### Error de conexión a MongoDB
+
 ```bash
 # Verificar si MongoDB está corriendo
 sudo systemctl status mongod
@@ -149,6 +158,7 @@ sudo journalctl -u mongod
 ```
 
 ### Puerto ya en uso
+
 ```bash
 # Verificar qué proceso usa el puerto 5000
 lsof -i :5000
@@ -160,6 +170,7 @@ PORT=5001
 ## 🔄 Desarrollo
 
 Para desarrollo activo, usa:
+
 ```bash
 npm run dev
 ```
