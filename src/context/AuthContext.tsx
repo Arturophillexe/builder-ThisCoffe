@@ -64,6 +64,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setToken(newToken);
       setUser(usuario);
       localStorage.setItem("token", newToken);
+
+      // Force a profile reload to ensure all user data is current
+      await loadUserProfile();
     } catch (error) {
       console.error("Error en login:", error);
       throw error;
