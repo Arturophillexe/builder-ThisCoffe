@@ -26,15 +26,14 @@ export const coffeeProducts: CoffeeProduct[] = [
   },
   {
     id: "2",
-    name: "Colombiano Supremo",
+    name: "tasa marshmallow",
     description:
-      "Café de cuerpo pleno y rico con notas de chocolate y caramelo.",
+      "taza de cafe muy bonita",
     price: 22.99,
     image:
-      "https://images.unsplash.com/photo-1504627298434-2119d9b9a75e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    category: "beans",
-    origin: "Colombia",
-    roastLevel: "medium",
+      "https://i.pinimg.com/originals/0a/4c/be/0a4cbee485576d90d50bb8471725bc7b.jpg",
+    category: "equipment",
+    origin: "colombia",
     featured: true,
   },
   {
@@ -43,7 +42,7 @@ export const coffeeProducts: CoffeeProduct[] = [
     description: "Sabor audaz y ahumado con un final rico e intenso.",
     price: 19.99,
     image:
-      "https://images.unsplash.com/photo-1587734195503-904fca47e0de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fplantillaslistas.cl%2Fproduct%2Fpack-25-plantillas-de-marcas-famosas-para-tazas%2F&psig=AOvVaw3OZVy5UilkB5SSe--SvAYP&ust=1753810797696000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPD7yP-M4I4DFQAAAAAdAAAAABAM",
     category: "beans",
     origin: "Brasil",
     roastLevel: "dark",
@@ -55,7 +54,7 @@ export const coffeeProducts: CoffeeProduct[] = [
       "Nuestra mezcla característica, perfectamente molida para cafeteras de goteo.",
     price: 16.99,
     image:
-      "https://images.unsplash.com/photo-1611564000670-d99d5e8c8b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "https://walmartgt.vtexassets.com/arquivos/ids/347746/Taza-Marca-Mainstays-De-Porcelana-12Oz-2-59367.jpg?v=638144267258670000",
     category: "ground",
     roastLevel: "medium",
     featured: true,
