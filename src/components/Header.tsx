@@ -72,6 +72,17 @@ const Header = () => {
                     </span>
                   )}
                 </div>
+                {/* Owner Dashboard Link for Sellers */}
+                {user.Usertype === "seller" && (
+                  <Button
+                    variant="ghost"
+                    asChild
+                    size="sm"
+                    className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                  >
+                    <Link to="/owner">Panel de Vendedor</Link>
+                  </Button>
+                )}
                 {/* Logout Button */}
                 <Button
                   variant="ghost"
