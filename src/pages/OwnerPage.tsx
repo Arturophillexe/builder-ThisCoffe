@@ -1,8 +1,9 @@
 // src/pages/OwnerPage.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { CoffeeProduct } from "../types";
-import { coffeeProducts } from "../data/products";
+import { productosAPI } from "../services/api";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -189,10 +190,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
 const OwnerPage: React.FC = () => {
   const { user } = useAuth();
-  const [products, setProducts] = useState<CoffeeProduct[]>(coffeeProducts);
+  const [products, setProducts] = useState<CoffeeProduct[]>([]);
   const [editingProduct, setEditingProduct] = useState<CoffeeProduct | null>(
     null,
   );
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
 
   if (!user || user.Usertype !== "seller") {
     return (
