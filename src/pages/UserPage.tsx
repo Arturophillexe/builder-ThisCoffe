@@ -152,51 +152,7 @@ const UserPage: React.FC = () => {
         )}
       </div>
     </div>
-
-      {/* Cart */}
-      <Card className="bg-gray-100">
-        <CardContent className="p-4">
-          <h2 className="text-xl font-semibold text-coffee-dark mb-4">Shopping Cart</h2>
-          {cartItems.length === 0 ? (
-            <p className="text-gray-600">Your cart is empty.</p>
-          ) : (
-            <div>
-              {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center justify-between border-b py-2">
-                  <div>
-                    <h3 className="text-lg text-coffee-dark">{item.name}</h3>
-                    <p className="text-gray-600">${item.price.toFixed(2)} x {item.quantity}</p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                      className="w-16"
-                      min="1"
-                    />
-                    <Button
-                      onClick={() => removeFromCart(item.id)}
-                      variant="destructive"
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                </div>
-              ))}
-              <div className="mt-4">
-                <p className="text-lg font-bold text-coffee-dark">
-                  Total: $
-                  {cartItems
-                    .reduce((total, item) => total + item.price * item.quantity, 0)
-                    .toFixed(2)}
-                </p>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+  );
   );
 };
 
