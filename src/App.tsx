@@ -3,6 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { AuthProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
 import Layout from "@/components/Layout";
 import Home from "./pages/Home";
 import Sponsors from "./pages/Sponsors";
@@ -11,27 +14,31 @@ import Events from "./pages/Events";
 import About from "./pages/About";
 import Login from "./pages/LoginPage";
 import Signup from "./pages/Signup";
-import Cart from './pages/Cart';
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
 import Checkout from './pages/Checkout';
 import Terms from './pages/TermsConditions';
-import NotFound from "./pages/NotFound";
-
-
-import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './context/CartContext';
 import OwnerPage from './pages/OwnerPage';
 import UserPage from './pages/UserPage';
 
 const queryClient = new QueryClient();
 
+const paypalOptions = {
+  "clientId": "AZkUBcsLe5QV998tLjKEF0_mfdTNCjg3cMn4Nvkmnaar2XswWDiZEIhh7MoprDcF7lxwgqSG83oISg04",
+  currency: "USD",
+  intent: "capture",
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-                      <AuthProvider>
-                <CartProvider>
+    <PayPalScriptProvider options={paypalOptions}>
+      <AuthProvider>
+        <CartProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+
         <Routes>
           {/* Authentication routes without Layout */}
           <Route path="/login" element={<Login />} />
@@ -64,10 +71,12 @@ const App = () => (
             }
           />
         </Routes>
-                        </CartProvider>
-                </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+        </CartProvider>
+      </AuthProvider>
+    </PayPalScriptProvider>
   </QueryClientProvider>
 );
+
 export default App;
