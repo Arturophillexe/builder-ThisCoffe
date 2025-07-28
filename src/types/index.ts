@@ -1,6 +1,7 @@
 // src/types/index.ts
 export interface CoffeeProduct {
-  id: string;
+  _id?: string;
+  id?: string; // Keep for backward compatibility
   name: string;
   description: string;
   price: number;
@@ -9,6 +10,10 @@ export interface CoffeeProduct {
   origin?: string;
   roastLevel?: "light" | "medium" | "dark";
   featured?: boolean;
+  sellerId?: string;
+  active?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface CartItem extends CoffeeProduct {
@@ -19,7 +24,7 @@ export interface User {
   id: string;
   role: 'owner' | 'user';
   username: string;
-  
+
   nombre:String,
   apellido:String,
   correo: { type: String, unique: true },
