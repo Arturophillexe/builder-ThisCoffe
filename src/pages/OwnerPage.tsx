@@ -31,7 +31,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 }) => {
   const [formData, setFormData] = useState<CoffeeProduct>(
     product || {
-      id: "",
+      _id: "",
       name: "",
       description: "",
       price: 0,
@@ -52,7 +52,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     <Card className="mt-4">
       <CardHeader>
         <CardTitle>
-          {formData.id ? "Editar Producto" : "Agregar Producto"}
+          {formData._id ? "Editar Producto" : "Agregar Producto"}
         </CardTitle>
       </CardHeader>
       <CardContent>
