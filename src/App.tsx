@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import Layout from "@/components/Layout";
@@ -18,42 +19,50 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const paypalOptions = {
+  "client-id": "AZkUBcsLe5QV998tLjKEF0_mfdTNCjg3cMn4Nvkmnaar2XswWDiZEIhh7MoprDcF7lxwgqSG83oISg04",
+  currency: "USD",
+  intent: "capture",
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <CartProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              {/* Authentication routes without Layout */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+    <PayPalScriptProvider options={paypalOptions}>
+      <AuthProvider>
+        <CartProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                {/* Authentication routes without Layout */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
 
-              {/* Main app routes with Layout */}
-              <Route
-                path="/*"
-                element={
-                  <Layout>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/sponsors" element={<Sponsors />} />
-                      <Route path="/blog" element={<Blog />} />
-                      <Route path="/events" element={<Events />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/cart" element={<Cart />} />
-                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </Layout>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </CartProvider>
-    </AuthProvider>
+                {/* Main app routes with Layout */}
+                <Route
+                  path="/*"
+                  element={
+                    <Layout>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/sponsors" element={<Sponsors />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/events" element={<Events />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/cart" element={<Cart />} />
+                        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </Layout>
+                  }
+                />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </CartProvider>
+      </AuthProvider>
+    </PayPalScriptProvider>
   </QueryClientProvider>
 );
 

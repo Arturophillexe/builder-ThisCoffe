@@ -12,6 +12,7 @@ import {
   CreditCard,
   X,
 } from "lucide-react";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { eventosAPI } from "@/services/api";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -53,12 +54,7 @@ const Events = () => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [paymentData, setPaymentData] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    cardName: "",
-  });
+  const [attendeeCount, setAttendeeCount] = useState(10);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -69,11 +65,9 @@ const Events = () => {
     });
   };
 
-  const handlePaymentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentData({
-      ...paymentData,
-      [e.target.name]: e.target.value,
-    });
+  const calculatePaymentAmount = () => {
+    if (!selectedPackage) return "0";
+    return (selectedPackage.priceValue * attendeeCount).toFixed(2);
   };
 
   const handleSelectChange = (name: string, value: string) => {
@@ -115,17 +109,22 @@ const Events = () => {
     setShowPaymentModal(true);
   };
 
-  const handlePaymentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulación de procesamiento de pago
-    alert("¡Pago procesado exitosamente! Recibirás confirmación por correo.");
+  const handlePayPalSuccess = (details: any) => {
+    toast.success(
+      `¡Pago procesado exitosamente! ID de transacción: ${details.id}. Recibirás confirmación por correo.`,
+    );
     setShowPaymentModal(false);
-    setPaymentData({
-      cardNumber: "",
-      expiryDate: "",
-      cvv: "",
-      cardName: "",
-    });
+    setSelectedPackage(null);
+    setAttendeeCount(10);
+  };
+
+  const handlePayPalError = (err: any) => {
+    console.error("Error en PayPal:", err);
+    toast.error("Error al procesar el pago. Por favor intenta nuevamente.");
+  };
+
+  const handlePayPalCancel = () => {
+    toast.info("Pago cancelado por el usuario.");
   };
 
   const eventTypes = [
@@ -641,7 +640,7 @@ const Events = () => {
         </div>
       )}
 
-      {/* Payment Modal */}
+      {/* PayPal Payment Modal */}
       {showPaymentModal && selectedPackage && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
@@ -666,77 +665,74 @@ const Events = () => {
                 <p className="text-sm text-gray-600 mb-2">
                   {selectedPackage.name} - {selectedPackage.price}
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 mb-3">
                   {selectedPackage.bestFor}
                 </p>
+
+                <div className="space-y-3">
+                  <div>
+                    <Label htmlFor="attendeeCount">Número de Asistentes</Label>
+                    <Input
+                      id="attendeeCount"
+                      type="number"
+                      min={selectedPackage.minGuests}
+                      value={attendeeCount}
+                      onChange={(e) => setAttendeeCount(parseInt(e.target.value) || selectedPackage.minGuests)}
+                      className="mt-1"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      Mínimo {selectedPackage.minGuests} asistentes
+                    </p>
+                  </div>
+
+                  <div className="border-t pt-3">
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-coffee-dark">Total:</span>
+                      <span className="text-2xl font-bold text-coffee-green">
+                        ${calculatePaymentAmount()} USD
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-500 text-right">
+                      ${selectedPackage.priceValue} x {attendeeCount} personas
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <form onSubmit={handlePaymentSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="cardName">Nombre en la Tarjeta</Label>
-                  <Input
-                    id="cardName"
-                    name="cardName"
-                    placeholder="Juan Pérez"
-                    value={paymentData.cardName}
-                    onChange={handlePaymentInputChange}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="cardNumber">Número de Tarjeta</Label>
-                  <Input
-                    id="cardNumber"
-                    name="cardNumber"
-                    placeholder="1234 5678 9012 3456"
-                    value={paymentData.cardNumber}
-                    onChange={handlePaymentInputChange}
-                    maxLength={19}
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="expiryDate">Fecha de Vencimiento</Label>
-                    <Input
-                      id="expiryDate"
-                      name="expiryDate"
-                      placeholder="MM/AA"
-                      value={paymentData.expiryDate}
-                      onChange={handlePaymentInputChange}
-                      maxLength={5}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="cvv">CVV</Label>
-                    <Input
-                      id="cvv"
-                      name="cvv"
-                      placeholder="123"
-                      value={paymentData.cvv}
-                      onChange={handlePaymentInputChange}
-                      maxLength={4}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <Button
-                    type="submit"
-                    className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
-                  >
-                    <CreditCard className="h-4 w-4 mr-2" />
-                    Procesar Pago
-                  </Button>
-                </div>
-              </form>
+              <div className="space-y-4">
+                <PayPalButtons
+                  style={{
+                    layout: "vertical",
+                    color: "gold",
+                    shape: "rect",
+                    label: "paypal",
+                  }}
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: calculatePaymentAmount(),
+                            currency_code: "USD",
+                          },
+                          description: `Paquete ${selectedPackage.name} para ${attendeeCount} personas - thiscoffee`,
+                        },
+                      ],
+                      intent: "CAPTURE",
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order?.capture().then((details) => {
+                      handlePayPalSuccess(details);
+                    });
+                  }}
+                  onError={handlePayPalError}
+                  onCancel={handlePayPalCancel}
+                />
+              </div>
 
               <p className="text-xs text-gray-500 mt-4 text-center">
-                Transacción segura protegida por SSL
+                Transacción segura procesada por PayPal
               </p>
             </div>
           </div>
