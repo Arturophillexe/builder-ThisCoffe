@@ -38,7 +38,7 @@ exports.registrarUsuario = async (req, res) => {
       role,
       agreeToTerms,
       subscribeNewsletter,
-      Usertype: Usertype || 'normal',
+      Usertype: Usertype || "normal",
     });
 
     await nuevoUsuario.save();

@@ -3,9 +3,8 @@ import { Coffee, Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
-
+import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { cartItems } = useCart();
@@ -69,7 +68,7 @@ const Header = () => {
                   </span>
                   {user.Usertype && (
                     <span className="text-xs bg-coffee-green text-coffee-dark px-2 py-1 rounded-full font-semibold">
-                      {user.Usertype === 'seller' ? 'Vendedor' : 'Usuario'}
+                      {user.Usertype === "seller" ? "Vendedor" : "Usuario"}
                     </span>
                   )}
                 </div>
@@ -113,17 +112,17 @@ const Header = () => {
             </Button>
             <div className="relative">
               <Link to="/cart" className="">
-            <img
-              className="w-7 h-7 cursor-pointer"
-              src="https://cdn-icons-png.freepik.com/512/6445/6445263.png"
-              alt="Carrito de compras"
-            />
-          {itemCount > 0 && (
-            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-yellow-500">
-              {itemCount}
-            </span>
-          )}
-          </Link>
+                <img
+                  className="w-7 h-7 cursor-pointer"
+                  src="https://cdn-icons-png.freepik.com/512/6445/6445263.png"
+                  alt="Carrito de compras"
+                />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-yellow-500">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
 
@@ -173,7 +172,9 @@ const Header = () => {
                       {user.Usertype && (
                         <div className="mt-1">
                           <span className="text-xs bg-coffee-green text-coffee-dark px-2 py-1 rounded-full font-semibold">
-                            {user.Usertype === 'seller' ? 'Vendedor' : 'Usuario'}
+                            {user.Usertype === "seller"
+                              ? "Vendedor"
+                              : "Usuario"}
                           </span>
                         </div>
                       )}
