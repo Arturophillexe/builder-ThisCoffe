@@ -237,7 +237,9 @@ const OwnerPage: React.FC = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+    if (
+      !window.confirm("¿Estás seguro de que quieres eliminar este producto?")
+    ) {
       return;
     }
 
@@ -257,9 +259,14 @@ const OwnerPage: React.FC = () => {
 
       if (productData._id) {
         // Update existing product
-        const response = await productosAPI.actualizar(productData._id, productData);
+        const response = await productosAPI.actualizar(
+          productData._id,
+          productData,
+        );
         setProducts(
-          products.map((p) => (p._id === productData._id ? response.producto : p)),
+          products.map((p) =>
+            p._id === productData._id ? response.producto : p,
+          ),
         );
         toast.success("Producto actualizado exitosamente");
       } else {
@@ -309,7 +316,9 @@ const OwnerPage: React.FC = () => {
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-8">
-            <div className="text-gray-600">No tienes productos creados aún.</div>
+            <div className="text-gray-600">
+              No tienes productos creados aún.
+            </div>
             <p className="text-sm text-gray-500 mt-2">
               Haz clic en "Agregar Nuevo Producto" para empezar.
             </p>
@@ -317,78 +326,78 @@ const OwnerPage: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-            <Card
-              key={product._id}
-              className="shadow-md hover:shadow-lg transition-shadow"
-            >
-              <CardContent className="p-4">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover rounded-md mb-3"
-                />
-                <h2 className="text-lg font-semibold text-coffee-dark mb-2">
-                  {product.name}
-                </h2>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                  {product.description}
-                </p>
-                <p className="text-coffee-green font-bold text-xl mb-2">
-                  ${product.price.toFixed(2)}
-                </p>
-                <div className="space-y-1 mb-3">
-                  <p className="text-sm text-gray-500">
-                    <span className="font-medium">Categoría:</span>{" "}
-                    {product.category === "beans"
-                      ? "Granos"
-                      : product.category === "ground"
-                        ? "Molido"
-                        : product.category === "equipment"
-                          ? "Equipos"
-                          : "Accesorios"}
+              <Card
+                key={product._id}
+                className="shadow-md hover:shadow-lg transition-shadow"
+              >
+                <CardContent className="p-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover rounded-md mb-3"
+                  />
+                  <h2 className="text-lg font-semibold text-coffee-dark mb-2">
+                    {product.name}
+                  </h2>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                    {product.description}
                   </p>
-                  {product.origin && (
+                  <p className="text-coffee-green font-bold text-xl mb-2">
+                    ${product.price.toFixed(2)}
+                  </p>
+                  <div className="space-y-1 mb-3">
                     <p className="text-sm text-gray-500">
-                      <span className="font-medium">Origen:</span>{" "}
-                      {product.origin}
+                      <span className="font-medium">Categoría:</span>{" "}
+                      {product.category === "beans"
+                        ? "Granos"
+                        : product.category === "ground"
+                          ? "Molido"
+                          : product.category === "equipment"
+                            ? "Equipos"
+                            : "Accesorios"}
                     </p>
+                    {product.origin && (
+                      <p className="text-sm text-gray-500">
+                        <span className="font-medium">Origen:</span>{" "}
+                        {product.origin}
+                      </p>
+                    )}
+                    {product.roastLevel && (
+                      <p className="text-sm text-gray-500">
+                        <span className="font-medium">Tostado:</span>{" "}
+                        {product.roastLevel === "light"
+                          ? "Claro"
+                          : product.roastLevel === "medium"
+                            ? "Medio"
+                            : "Oscuro"}
+                      </p>
+                    )}
+                  </div>
+                  {product.featured && (
+                    <span className="inline-block bg-coffee-green text-coffee-dark text-xs px-2 py-1 rounded-full mb-3 font-semibold">
+                      Destacado
+                    </span>
                   )}
-                  {product.roastLevel && (
-                    <p className="text-sm text-gray-500">
-                      <span className="font-medium">Tostado:</span>{" "}
-                      {product.roastLevel === "light"
-                        ? "Claro"
-                        : product.roastLevel === "medium"
-                          ? "Medio"
-                          : "Oscuro"}
-                    </p>
-                  )}
-                </div>
-                {product.featured && (
-                  <span className="inline-block bg-coffee-green text-coffee-dark text-xs px-2 py-1 rounded-full mb-3 font-semibold">
-                    Destacado
-                  </span>
-                )}
-                <div className="flex space-x-2 pt-2">
-                  <Button
-                    onClick={() => handleEdit(product)}
-                    size="sm"
-                    className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream flex-1"
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    onClick={() => handleDelete(product._id)}
-                    size="sm"
-                    variant="destructive"
-                    className="flex-1"
-                  >
-                    Eliminar
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <div className="flex space-x-2 pt-2">
+                    <Button
+                      onClick={() => handleEdit(product)}
+                      size="sm"
+                      className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream flex-1"
+                    >
+                      Editar
+                    </Button>
+                    <Button
+                      onClick={() => handleDelete(product._id)}
+                      size="sm"
+                      variant="destructive"
+                      className="flex-1"
+                    >
+                      Eliminar
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         )}
       </div>

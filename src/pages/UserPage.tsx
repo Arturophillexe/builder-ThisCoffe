@@ -1,18 +1,18 @@
 // src/pages/UserPage.tsx
-import React, { useEffect, useState } from 'react';
-import { useCart } from '../context/CartContext';
-import { productosAPI } from '../services/api';
-import { CoffeeProduct } from '../types';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { toast } from 'sonner';
+import React, { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
+import { productosAPI } from "../services/api";
+import { CoffeeProduct } from "../types";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 const UserPage: React.FC = () => {
   const { addToCart } = useCart();
   const [products, setProducts] = useState<CoffeeProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     loadProducts();
@@ -24,8 +24,8 @@ const UserPage: React.FC = () => {
       const data = await productosAPI.obtenerTodos();
       setProducts(data);
     } catch (error: any) {
-      console.error('Error al cargar productos:', error);
-      toast.error('Error al cargar productos');
+      console.error("Error al cargar productos:", error);
+      toast.error("Error al cargar productos");
     } finally {
       setLoading(false);
     }
@@ -42,8 +42,8 @@ const UserPage: React.FC = () => {
       const data = await productosAPI.buscar(searchTerm);
       setProducts(data);
     } catch (error: any) {
-      console.error('Error al buscar productos:', error);
-      toast.error('Error al buscar productos');
+      console.error("Error al buscar productos:", error);
+      toast.error("Error al buscar productos");
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,9 @@ const UserPage: React.FC = () => {
       <div className="bg-coffee-brown text-coffee-cream py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-2">Tienda de Café</h1>
-          <p className="text-coffee-cream/80">Descubre nuestra selección premium de café</p>
+          <p className="text-coffee-cream/80">
+            Descubre nuestra selección premium de café
+          </p>
         </div>
       </div>
 
@@ -68,7 +70,7 @@ const UserPage: React.FC = () => {
             placeholder="Buscar productos..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+            onKeyPress={(e) => e.key === "Enter" && handleSearch()}
             className="max-w-md"
           />
           <Button
@@ -80,7 +82,7 @@ const UserPage: React.FC = () => {
           {searchTerm && (
             <Button
               onClick={() => {
-                setSearchTerm('');
+                setSearchTerm("");
                 loadProducts();
               }}
               variant="outline"
@@ -102,35 +104,50 @@ const UserPage: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {filteredProducts.map((product: CoffeeProduct) => (
-              <Card key={product._id || product.id} className="shadow-md hover:shadow-lg transition-shadow">
+              <Card
+                key={product._id || product.id}
+                className="shadow-md hover:shadow-lg transition-shadow"
+              >
                 <CardContent className="p-4">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-48 object-cover rounded-md mb-3"
                   />
-                  <h2 className="text-lg font-semibold text-coffee-dark mb-2">{product.name}</h2>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-                  <p className="text-coffee-green font-bold text-xl mb-2">${product.price.toFixed(2)}</p>
+                  <h2 className="text-lg font-semibold text-coffee-dark mb-2">
+                    {product.name}
+                  </h2>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                    {product.description}
+                  </p>
+                  <p className="text-coffee-green font-bold text-xl mb-2">
+                    ${product.price.toFixed(2)}
+                  </p>
                   <div className="space-y-1 mb-3">
                     <p className="text-sm text-gray-500">
-                      <span className="font-medium">Categoría:</span> {
-                        product.category === 'beans' ? 'Granos' :
-                        product.category === 'ground' ? 'Molido' :
-                        product.category === 'equipment' ? 'Equipos' : 'Accesorios'
-                      }
+                      <span className="font-medium">Categoría:</span>{" "}
+                      {product.category === "beans"
+                        ? "Granos"
+                        : product.category === "ground"
+                          ? "Molido"
+                          : product.category === "equipment"
+                            ? "Equipos"
+                            : "Accesorios"}
                     </p>
                     {product.origin && (
                       <p className="text-sm text-gray-500">
-                        <span className="font-medium">Origen:</span> {product.origin}
+                        <span className="font-medium">Origen:</span>{" "}
+                        {product.origin}
                       </p>
                     )}
                     {product.roastLevel && (
                       <p className="text-sm text-gray-500">
-                        <span className="font-medium">Tostado:</span> {
-                          product.roastLevel === 'light' ? 'Claro' :
-                          product.roastLevel === 'medium' ? 'Medio' : 'Oscuro'
-                        }
+                        <span className="font-medium">Tostado:</span>{" "}
+                        {product.roastLevel === "light"
+                          ? "Claro"
+                          : product.roastLevel === "medium"
+                            ? "Medio"
+                            : "Oscuro"}
                       </p>
                     )}
                   </div>

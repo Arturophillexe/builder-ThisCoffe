@@ -22,13 +22,13 @@ export interface CartItem extends CoffeeProduct {
 
 export interface User {
   id: string;
-  role: 'owner' | 'user';
+  role: "owner" | "user";
   username: string;
 
-  nombre:String,
-  apellido:String,
-  correo: { type: String, unique: true },
-  empresa:String,
-  rol:String,
-  contrasena:String
+  nombre: String;
+  apellido: String;
+  correo: { type: String; unique: true };
+  empresa: String;
+  rol: String;
+  contrasena: String;
 }

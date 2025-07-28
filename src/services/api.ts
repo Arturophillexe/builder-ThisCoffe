@@ -109,16 +109,22 @@ export const productosAPI = {
     if (filters?.category) params.append("category", filters.category);
     if (filters?.featured) params.append("featured", "true");
 
-    const response = await fetch(`${API_BASE_URL}/products?${params.toString()}`, {
-      headers: getAuthHeaders(),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/products?${params.toString()}`,
+      {
+        headers: getAuthHeaders(),
+      },
+    );
     return handleResponse(response);
   },
 
   obtenerMisProductos: async () => {
-    const response = await fetch(`${API_BASE_URL}/products/seller/my-products`, {
-      headers: getAuthHeaders(),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/products/seller/my-products`,
+      {
+        headers: getAuthHeaders(),
+      },
+    );
     return handleResponse(response);
   },
 
@@ -156,9 +162,12 @@ export const productosAPI = {
   },
 
   buscar: async (query: string) => {
-    const response = await fetch(`${API_BASE_URL}/products/search?q=${encodeURIComponent(query)}`, {
-      headers: getAuthHeaders(),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/products/search?q=${encodeURIComponent(query)}`,
+      {
+        headers: getAuthHeaders(),
+      },
+    );
     return handleResponse(response);
   },
 };
