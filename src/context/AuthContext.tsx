@@ -61,15 +61,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await usuariosAPI.login({ email, password });
       const { token: newToken, usuario } = response;
 
-      console.log("Login response:", response);
-      console.log("Setting user:", usuario);
-
+      // Set token first
       setToken(newToken);
-      setUser(usuario);
       localStorage.setItem("token", newToken);
 
-      // Force a profile reload to ensure all user data is current
-      await loadUserProfile();
+      // Set user data
+      setUser(usuario);
     } catch (error) {
       console.error("Error en login:", error);
       throw error;
