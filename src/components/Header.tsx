@@ -59,21 +59,50 @@ const Header = () => {
 
           {/* Call to Action */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              asChild
-              size="sm"
-              className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
-            >
-              <Link to="/login">Iniciar Sesión</Link>
-            </Button>
-            <Button
-              asChild
-              size="sm"
-              className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
-            >
-              <Link to="/signup">Registrarse</Link>
-            </Button>
+            {user ? (
+              <>
+                {/* User Name and Type */}
+                <div className="flex items-center space-x-2 text-coffee-cream">
+                  <User className="h-4 w-4 text-coffee-green" />
+                  <span className="text-sm font-medium">
+                    {user.firstName} {user.lastName}
+                  </span>
+                  {user.Usertype && (
+                    <span className="text-xs bg-coffee-green text-coffee-dark px-2 py-1 rounded-full font-semibold">
+                      {user.Usertype === 'seller' ? 'Vendedor' : 'Usuario'}
+                    </span>
+                  )}
+                </div>
+                {/* Logout Button */}
+                <Button
+                  variant="ghost"
+                  onClick={logout}
+                  size="sm"
+                  className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Cerrar Sesión
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  variant="ghost"
+                  asChild
+                  size="sm"
+                  className="text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                >
+                  <Link to="/login">Iniciar Sesión</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
+                >
+                  <Link to="/signup">Registrarse</Link>
+                </Button>
+              </>
+            )}
             <Button
               variant="outline"
               asChild
