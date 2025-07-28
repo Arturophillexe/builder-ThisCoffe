@@ -1,14 +1,55 @@
 // src/pages/UserPage.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { coffeeProducts } from '../data/products';
+import { productosAPI } from '../services/api';
 import { CoffeeProduct } from '../types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 
 const UserPage: React.FC = () => {
-  const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
+  const { addToCart } = useCart();
+  const [products, setProducts] = useState<CoffeeProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const data = await productosAPI.obtenerTodos();
+      setProducts(data);
+    } catch (error: any) {
+      console.error('Error al cargar productos:', error);
+      toast.error('Error al cargar productos');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      loadProducts();
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const data = await productosAPI.buscar(searchTerm);
+      setProducts(data);
+    } catch (error: any) {
+      console.error('Error al buscar productos:', error);
+      toast.error('Error al buscar productos');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredProducts = searchTerm ? products : products;
 
   return (
     <div className="container mx-auto p-4">
