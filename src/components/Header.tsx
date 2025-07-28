@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { Coffee, Menu, X } from "lucide-react";
+import { Coffee, Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 
 const Header = () => {
@@ -11,6 +12,7 @@ const Header = () => {
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, logout } = useAuth();
 
   const navigation = [
     { name: "Inicio", href: "/" },
@@ -155,7 +157,7 @@ const Header = () => {
                     Reservar Evento
                   </Link>
                 </Button>
-                
+
               </div>
             </div>
           </div>
