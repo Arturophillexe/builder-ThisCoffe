@@ -155,10 +155,13 @@ const OwnerPage: React.FC = () => {
   const [products, setProducts] = useState<CoffeeProduct[]>(coffeeProducts);
   const [editingProduct, setEditingProduct] = useState<CoffeeProduct | null>(null);
 
-  if (!user || user.role !== 'owner') {
+  if (!user || user.Usertype !== 'seller') {
     return (
       <div className="container mx-auto p-4 text-coffee-dark">
-        Access Denied: Owner Only
+        <div className="text-center mt-10">
+          <h1 className="text-2xl font-bold text-coffee-dark mb-4">Acceso Denegado</h1>
+          <p className="text-gray-600">Esta página está disponible solo para vendedores.</p>
+        </div>
       </div>
     );
   }
@@ -185,7 +188,7 @@ const OwnerPage: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold text-coffee-dark mb-4">Owner Dashboard - Manage Products</h1>
-      
+
       <Button
         onClick={() => setEditingProduct({} as CoffeeProduct)}
         className="mb-4 bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
