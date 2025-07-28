@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,16 +33,17 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await login(formData.email, formData.password);
+      await login(formData.email, formData.password);
       toast.success("¡Inicio de sesión exitoso!");
 
-      // Check if user context is available after login
-      const authContext = useAuth();
-      if (authContext.user && authContext.user.Usertype === 'seller') {
-        navigate("/owner");
-      } else {
-        navigate("/");
-      }
+      // The user state will be updated after login, so we need to wait a bit
+      setTimeout(() => {
+        if (user && user.Usertype === 'seller') {
+          navigate("/owner");
+        } else {
+          navigate("/");
+        }
+      }, 100);
     } catch (error: any) {
       toast.error(error.message || "Error al iniciar sesión");
     } finally {
