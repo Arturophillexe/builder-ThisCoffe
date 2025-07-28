@@ -1,15 +1,21 @@
 // src/pages/OwnerPage.tsx
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { CoffeeProduct } from '../types';
-import { coffeeProducts } from '../data/products';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { CoffeeProduct } from "../types";
+import { coffeeProducts } from "../data/products";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ProductFormProps {
   product?: CoffeeProduct;
@@ -17,19 +23,23 @@ interface ProductFormProps {
   onCancel: () => void;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }) => {
+const ProductForm: React.FC<ProductFormProps> = ({
+  product,
+  onSubmit,
+  onCancel,
+}) => {
   const [formData, setFormData] = useState<CoffeeProduct>(
     product || {
-      id: '',
-      name: '',
-      description: '',
+      id: "",
+      name: "",
+      description: "",
       price: 0,
-      image: '',
-      category: 'beans',
-      origin: '',
-      roastLevel: 'light',
+      image: "",
+      category: "beans",
+      origin: "",
+      roastLevel: "light",
       featured: false,
-    }
+    },
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -40,7 +50,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
   return (
     <Card className="mt-4">
       <CardHeader>
-        <CardTitle>{formData.id ? 'Editar Producto' : 'Agregar Producto'}</CardTitle>
+        <CardTitle>
+          {formData.id ? "Editar Producto" : "Agregar Producto"}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -49,7 +61,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Input
               id="name"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               placeholder="Nombre del producto"
               required
             />
@@ -59,7 +73,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Textarea
               id="description"
               value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
               placeholder="Descripción del producto"
               required
             />
@@ -71,7 +87,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
               type="number"
               step="0.01"
               value={formData.price}
-              onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
+              onChange={(e) =>
+                setFormData({ ...formData, price: parseFloat(e.target.value) })
+              }
               placeholder="0.00"
               required
             />
@@ -82,7 +100,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
               id="image"
               type="url"
               value={formData.image}
-              onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, image: e.target.value })
+              }
               placeholder="https://ejemplo.com/imagen.jpg"
               required
             />
@@ -91,7 +111,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Label htmlFor="category">Categoría</Label>
             <Select
               value={formData.category}
-              onValueChange={(value) => setFormData({ ...formData, category: value as any })}
+              onValueChange={(value) =>
+                setFormData({ ...formData, category: value as any })
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Seleccionar categoría" />
@@ -109,7 +131,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Input
               id="origin"
               value={formData.origin}
-              onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, origin: e.target.value })
+              }
               placeholder="País o región de origen"
             />
           </div>
@@ -117,7 +141,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Label htmlFor="roastLevel">Nivel de Tostado</Label>
             <Select
               value={formData.roastLevel}
-              onValueChange={(value) => setFormData({ ...formData, roastLevel: value as any })}
+              onValueChange={(value) =>
+                setFormData({ ...formData, roastLevel: value as any })
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Seleccionar nivel de tostado" />
@@ -133,12 +159,17 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
             <Checkbox
               id="featured"
               checked={formData.featured}
-              onCheckedChange={(checked) => setFormData({ ...formData, featured: checked as boolean })}
+              onCheckedChange={(checked) =>
+                setFormData({ ...formData, featured: checked as boolean })
+              }
             />
             <Label htmlFor="featured">Producto Destacado</Label>
           </div>
           <div className="flex space-x-2">
-            <Button type="submit" className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream">
+            <Button
+              type="submit"
+              className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
+            >
               Guardar
             </Button>
             <Button
@@ -159,14 +190,20 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }
 const OwnerPage: React.FC = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState<CoffeeProduct[]>(coffeeProducts);
-  const [editingProduct, setEditingProduct] = useState<CoffeeProduct | null>(null);
+  const [editingProduct, setEditingProduct] = useState<CoffeeProduct | null>(
+    null,
+  );
 
-  if (!user || user.Usertype !== 'seller') {
+  if (!user || user.Usertype !== "seller") {
     return (
       <div className="container mx-auto p-4 text-coffee-dark">
         <div className="text-center mt-10">
-          <h1 className="text-2xl font-bold text-coffee-dark mb-4">Acceso Denegado</h1>
-          <p className="text-gray-600">Esta página está disponible solo para vendedores.</p>
+          <h1 className="text-2xl font-bold text-coffee-dark mb-4">
+            Acceso Denegado
+          </h1>
+          <p className="text-gray-600">
+            Esta página está disponible solo para vendedores.
+          </p>
         </div>
       </div>
     );
@@ -183,10 +220,13 @@ const OwnerPage: React.FC = () => {
   const handleSubmit = (updatedProduct: CoffeeProduct) => {
     if (updatedProduct.id) {
       setProducts(
-        products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p))
+        products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p)),
       );
     } else {
-      setProducts([...products, { ...updatedProduct, id: Date.now().toString() }]);
+      setProducts([
+        ...products,
+        { ...updatedProduct, id: Date.now().toString() },
+      ]);
     }
     setEditingProduct(null);
   };
@@ -208,45 +248,60 @@ const OwnerPage: React.FC = () => {
           + Agregar Nuevo Producto
         </Button>
 
-      {editingProduct && (
-        <ProductForm
-          product={editingProduct}
-          onSubmit={handleSubmit}
-          onCancel={() => setEditingProduct(null)}
-        />
-      )}
+        {editingProduct && (
+          <ProductForm
+            product={editingProduct}
+            onSubmit={handleSubmit}
+            onCancel={() => setEditingProduct(null)}
+          />
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
-            <Card key={product.id} className="shadow-md hover:shadow-lg transition-shadow">
+            <Card
+              key={product.id}
+              className="shadow-md hover:shadow-lg transition-shadow"
+            >
               <CardContent className="p-4">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-48 object-cover rounded-md mb-3"
                 />
-                <h2 className="text-lg font-semibold text-coffee-dark mb-2">{product.name}</h2>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-                <p className="text-coffee-green font-bold text-xl mb-2">${product.price.toFixed(2)}</p>
+                <h2 className="text-lg font-semibold text-coffee-dark mb-2">
+                  {product.name}
+                </h2>
+                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                  {product.description}
+                </p>
+                <p className="text-coffee-green font-bold text-xl mb-2">
+                  ${product.price.toFixed(2)}
+                </p>
                 <div className="space-y-1 mb-3">
                   <p className="text-sm text-gray-500">
-                    <span className="font-medium">Categoría:</span> {
-                      product.category === 'beans' ? 'Granos' :
-                      product.category === 'ground' ? 'Molido' :
-                      product.category === 'equipment' ? 'Equipos' : 'Accesorios'
-                    }
+                    <span className="font-medium">Categoría:</span>{" "}
+                    {product.category === "beans"
+                      ? "Granos"
+                      : product.category === "ground"
+                        ? "Molido"
+                        : product.category === "equipment"
+                          ? "Equipos"
+                          : "Accesorios"}
                   </p>
                   {product.origin && (
                     <p className="text-sm text-gray-500">
-                      <span className="font-medium">Origen:</span> {product.origin}
+                      <span className="font-medium">Origen:</span>{" "}
+                      {product.origin}
                     </p>
                   )}
                   {product.roastLevel && (
                     <p className="text-sm text-gray-500">
-                      <span className="font-medium">Tostado:</span> {
-                        product.roastLevel === 'light' ? 'Claro' :
-                        product.roastLevel === 'medium' ? 'Medio' : 'Oscuro'
-                      }
+                      <span className="font-medium">Tostado:</span>{" "}
+                      {product.roastLevel === "light"
+                        ? "Claro"
+                        : product.roastLevel === "medium"
+                          ? "Medio"
+                          : "Oscuro"}
                     </p>
                   )}
                 </div>

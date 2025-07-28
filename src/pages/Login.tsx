@@ -37,7 +37,7 @@ const Login = () => {
       toast.success("¡Inicio de sesión exitoso!");
 
       // Redirect based on user type
-      if (userData.Usertype === 'seller') {
+      if (userData.Usertype === "seller") {
         navigate("/owner");
       } else {
         navigate("/");
