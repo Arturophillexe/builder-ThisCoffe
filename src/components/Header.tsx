@@ -58,9 +58,7 @@ const Header = () => {
 
           {/* Call to Action */}
           <div className="hidden md:flex items-center space-x-4">
-            {loading ? (
-              <div className="text-coffee-cream text-sm">Cargando...</div>
-            ) : user ? (
+            {user ? (
               <>
                 {/* User Name and Type */}
                 <div className="flex items-center space-x-2 text-coffee-cream">
@@ -161,11 +159,7 @@ const Header = () => {
                 </Link>
               ))}
               <div className="mt-4 space-y-2">
-                {loading ? (
-                  <div className="text-coffee-cream text-sm px-3 py-2">
-                    Cargando...
-                  </div>
-                ) : user ? (
+                {user ? (
                   <>
                     {/* User Info */}
                     <div className="px-3 py-2 text-coffee-cream border border-coffee-green rounded-md">
