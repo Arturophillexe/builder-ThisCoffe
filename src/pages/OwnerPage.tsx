@@ -303,10 +303,22 @@ const OwnerPage: React.FC = () => {
           />
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
+        {loading ? (
+          <div className="text-center py-8">
+            <div className="text-coffee-dark">Cargando productos...</div>
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-8">
+            <div className="text-gray-600">No tienes productos creados aún.</div>
+            <p className="text-sm text-gray-500 mt-2">
+              Haz clic en "Agregar Nuevo Producto" para empezar.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => (
             <Card
-              key={product.id}
+              key={product._id}
               className="shadow-md hover:shadow-lg transition-shadow"
             >
               <CardContent className="p-4">
@@ -366,7 +378,7 @@ const OwnerPage: React.FC = () => {
                     Editar
                   </Button>
                   <Button
-                    onClick={() => handleDelete(product.id)}
+                    onClick={() => handleDelete(product._id)}
                     size="sm"
                     variant="destructive"
                     className="flex-1"
@@ -377,7 +389,8 @@ const OwnerPage: React.FC = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
