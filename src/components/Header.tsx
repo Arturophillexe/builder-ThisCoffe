@@ -3,8 +3,12 @@ import { Coffee, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useCart } from '../context/CartContext';
+
 
 const Header = () => {
+  const { cartItems } = useCart();
+  const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -72,10 +76,24 @@ const Header = () => {
               variant="outline"
               asChild
               size="sm"
-              className="border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
+              className="border-coffee-cream text-coffee-brown hover:bg-coffee-cream hover:text-coffee-black"
             >
               <Link to="/events">Reservar Evento</Link>
             </Button>
+            <div className="relative">
+              <Link to="/cart" className="">
+            <img
+              className="w-7 h-7 cursor-pointer"
+              src="https://cdn-icons-png.freepik.com/512/6445/6445263.png"
+              alt="Carrito de compras"
+            />
+          {itemCount > 0 && (
+            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-yellow-500">
+              {itemCount}
+            </span>
+          )}
+          </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -137,6 +155,7 @@ const Header = () => {
                     Reservar Evento
                   </Link>
                 </Button>
+                
               </div>
             </div>
           </div>

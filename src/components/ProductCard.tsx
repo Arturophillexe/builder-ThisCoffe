@@ -1,3 +1,4 @@
+import { useCart } from '../context/CartContext';
 import { CoffeeProduct } from "@/data/products";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,11 +10,13 @@ import {
 } from "@/components/ui/card";
 import { ShoppingCart, Star } from "lucide-react";
 
+
 interface ProductCardProps {
   product: CoffeeProduct;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+    const { addToCart } = useCart();
   const getRoastLevelColor = (level?: string) => {
     switch (level) {
       case "light":
@@ -133,7 +136,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
       <CardFooter className="p-4 pt-0">
         <Button
-          className="w-full bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
+          onClick={() => addToCart(product)}
+          className="w-full bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream 
+                          transition-transform duration-75 ease-in-out active:scale-95"
           size="sm"
         >
           <ShoppingCart className="h-4 w-4 mr-2" />
