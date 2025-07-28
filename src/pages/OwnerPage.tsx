@@ -279,6 +279,7 @@ const OwnerPage: React.FC = () => {
       </div>
     </div>
   );
+  );
 };
 
 export default OwnerPage;
