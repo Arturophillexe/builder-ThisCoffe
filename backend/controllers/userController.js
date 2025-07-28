@@ -19,6 +19,7 @@ exports.registrarUsuario = async (req, res) => {
       role,
       agreeToTerms,
       subscribeNewsletter,
+      Usertype,
     } = req.body;
 
     // Verificar si el usuario ya existe
@@ -37,6 +38,7 @@ exports.registrarUsuario = async (req, res) => {
       role,
       agreeToTerms,
       subscribeNewsletter,
+      Usertype: Usertype || 'normal',
     });
 
     await nuevoUsuario.save();
@@ -54,6 +56,7 @@ exports.registrarUsuario = async (req, res) => {
         email: nuevoUsuario.email,
         company: nuevoUsuario.company,
         role: nuevoUsuario.role,
+        Usertype: nuevoUsuario.Usertype,
       },
     });
   } catch (err) {
@@ -91,6 +94,7 @@ exports.loginUsuario = async (req, res) => {
         email: usuario.email,
         company: usuario.company,
         role: usuario.role,
+        Usertype: usuario.Usertype,
       },
     });
   } catch (err) {
