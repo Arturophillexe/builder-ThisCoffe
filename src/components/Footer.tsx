@@ -10,6 +10,10 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+
+    const navigation = [
+    { name: "Terminos y condiciones", href: "/terms" },
+  ];
   return (
     <footer className="bg-coffee-dark text-coffee-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -131,12 +135,9 @@ const Footer = () => {
             >
               Política de Privacidad
             </a>
-            <a
-              href="#"
-              className="text-coffee-cream/60 hover:text-coffee-green text-sm transition-colors"
-            >
-              Términos de Servicio
-            </a>
+          <Link to="/terms" className="flex space-x-6 mt-4 md:mt-0">
+            Terminos y Condiciones
+          </Link>
           </div>
         </div>
       </div>
