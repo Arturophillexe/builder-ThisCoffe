@@ -61,6 +61,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await usuariosAPI.login({ email, password });
       const { token: newToken, usuario } = response;
 
+      console.log("Login response:", response);
+      console.log("Setting user:", usuario);
+
       setToken(newToken);
       setUser(usuario);
       localStorage.setItem("token", newToken);
