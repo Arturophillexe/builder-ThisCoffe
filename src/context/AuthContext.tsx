@@ -20,7 +20,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   token: string | null;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
   register: (userData: any) => Promise<void>;
   logout: () => void;
   loading: boolean;
@@ -67,6 +67,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       // Set user data
       setUser(usuario);
+
+      // Return user data for immediate use
+      return usuario;
     } catch (error) {
       console.error("Error en login:", error);
       throw error;
