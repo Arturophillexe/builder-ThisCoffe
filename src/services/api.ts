@@ -102,6 +102,67 @@ export const usuariosAPI = {
   },
 };
 
+// API de productos
+export const productosAPI = {
+  obtenerTodos: async (filters?: { category?: string; featured?: boolean }) => {
+    const params = new URLSearchParams();
+    if (filters?.category) params.append("category", filters.category);
+    if (filters?.featured) params.append("featured", "true");
+
+    const response = await fetch(`${API_BASE_URL}/products?${params.toString()}`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
+
+  obtenerMisProductos: async () => {
+    const response = await fetch(`${API_BASE_URL}/products/seller/my-products`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
+
+  obtenerPorId: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
+
+  crear: async (productData: any) => {
+    const response = await fetch(`${API_BASE_URL}/products`, {
+      method: "POST",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(productData),
+    });
+    return handleResponse(response);
+  },
+
+  actualizar: async (id: string, productData: any) => {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(productData),
+    });
+    return handleResponse(response);
+  },
+
+  eliminar: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
+
+  buscar: async (query: string) => {
+    const response = await fetch(`${API_BASE_URL}/products/search?q=${encodeURIComponent(query)}`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
+};
+
 // Test de conexión
 export const testAPI = {
   ping: async () => {
