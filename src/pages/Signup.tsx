@@ -76,8 +76,8 @@ const Signup = () => {
   };
 
   const roles = [
-    "Dueño de Negocio",
-    "Entusiasta del Café"
+    "Vendedor",
+    "Usuario"
   ];
 
   return (
