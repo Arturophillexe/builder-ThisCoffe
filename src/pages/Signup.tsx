@@ -30,6 +30,7 @@ const Signup = () => {
     confirmPassword: "",
     company: "",
     role: "",
+    Usertype: "",
     agreeToTerms: false,
     subscribeNewsletter: true,
   });
@@ -43,10 +44,20 @@ const Signup = () => {
   };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === "role") {
+      // Map role to Usertype
+      const userType = value === "Vendedor" ? "seller" : "normal";
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        Usertype: userType,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
