@@ -160,23 +160,58 @@ const Header = () => {
                 </Link>
               ))}
               <div className="mt-4 space-y-2">
-                <Button
-                  variant="ghost"
-                  asChild
-                  className="w-full text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
-                >
-                  <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                    Iniciar Sesión
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
-                >
-                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                    Registrarse
-                  </Link>
-                </Button>
+                {user ? (
+                  <>
+                    {/* User Info */}
+                    <div className="px-3 py-2 text-coffee-cream border border-coffee-green rounded-md">
+                      <div className="flex items-center space-x-2">
+                        <User className="h-4 w-4 text-coffee-green" />
+                        <span className="text-sm font-medium">
+                          {user.firstName} {user.lastName}
+                        </span>
+                      </div>
+                      {user.Usertype && (
+                        <div className="mt-1">
+                          <span className="text-xs bg-coffee-green text-coffee-dark px-2 py-1 rounded-full font-semibold">
+                            {user.Usertype === 'seller' ? 'Vendedor' : 'Usuario'}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    {/* Logout Button */}
+                    <Button
+                      variant="ghost"
+                      onClick={() => {
+                        logout();
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Cerrar Sesión
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="ghost"
+                      asChild
+                      className="w-full text-coffee-cream hover:text-coffee-green hover:bg-coffee-cream/10"
+                    >
+                      <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                        Iniciar Sesión
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      className="w-full bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark font-semibold"
+                    >
+                      <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                        Registrarse
+                      </Link>
+                    </Button>
+                  </>
+                )}
                 <Button
                   variant="outline"
                   asChild
@@ -186,7 +221,6 @@ const Header = () => {
                     Reservar Evento
                   </Link>
                 </Button>
-
               </div>
             </div>
           </div>
