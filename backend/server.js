@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas
 app.use("/api/eventos", require("./routes/eventRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/products", require("./routes/productRoutes"));
 
 // Ruta de prueba
 app.get("/api/test", (req, res) => {
