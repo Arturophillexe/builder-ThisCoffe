@@ -1,0 +1,248 @@
+// src/pages/OwnerPage.tsx
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { CoffeeProduct } from '../types';
+import { coffeeProducts } from '../data/products';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+interface ProductFormProps {
+  product?: CoffeeProduct;
+  onSubmit: (product: CoffeeProduct) => void;
+  onCancel: () => void;
+}
+
+const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }) => {
+  const [formData, setFormData] = useState<CoffeeProduct>(
+    product || {
+      id: '',
+      name: '',
+      description: '',
+      price: 0,
+      image: '',
+      category: 'beans',
+      origin: '',
+      roastLevel: 'light',
+      featured: false,
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
+
+  return (
+    <Card className="mt-4">
+      <CardHeader>
+        <CardTitle>{formData.id ? 'Edit Product' : 'Add Product'}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="description">Description</Label>
+            <Textarea
+              id="description"
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="price">Price</Label>
+            <Input
+              id="price"
+              type="number"
+              value={formData.price}
+              onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="image">Image URL</Label>
+            <Input
+              id="image"
+              type="url"
+              value={formData.image}
+              onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="category">Category</Label>
+            <Select
+              value={formData.category}
+              onValueChange={(value) => setFormData({ ...formData, category: value as any })}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="beans">Beans</SelectItem>
+                <SelectItem value="ground">Ground</SelectItem>
+                <SelectItem value="equipment">Equipment</SelectItem>
+                <SelectItem value="accessories">Accessories</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor="origin">Origin</Label>
+            <Input
+              id="origin"
+              value={formData.origin}
+              onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
+            />
+          </div>
+          <div>
+            <Label htmlFor="roastLevel">Roast Level</Label>
+            <Select
+              value={formData.roastLevel}
+              onValueChange={(value) => setFormData({ ...formData, roastLevel: value as any })}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select roast level" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="featured"
+              checked={formData.featured}
+              onCheckedChange={(checked) => setFormData({ ...formData, featured: checked as boolean })}
+            />
+            <Label htmlFor="featured">Featured</Label>
+          </div>
+          <div className="flex space-x-2">
+            <Button type="submit" className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream">
+              Save
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onCancel}
+              className="border-coffee-cream text-coffee-cream hover:bg-coffee-cream hover:text-coffee-brown"
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
+  );
+};
+
+const OwnerPage: React.FC = () => {
+  const { user } = useAuth();
+  const [products, setProducts] = useState<CoffeeProduct[]>(coffeeProducts);
+  const [editingProduct, setEditingProduct] = useState<CoffeeProduct | null>(null);
+
+  if (!user || user.role !== 'owner') {
+    return (
+      <div className="container mx-auto p-4 text-coffee-dark">
+        Access Denied: Owner Only
+      </div>
+    );
+  }
+
+  const handleEdit = (product: CoffeeProduct) => {
+    setEditingProduct(product);
+  };
+
+  const handleDelete = (id: string) => {
+    setProducts(products.filter((p) => p.id !== id));
+  };
+
+  const handleSubmit = (updatedProduct: CoffeeProduct) => {
+    if (updatedProduct.id) {
+      setProducts(
+        products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p))
+      );
+    } else {
+      setProducts([...products, { ...updatedProduct, id: Date.now().toString() }]);
+    }
+    setEditingProduct(null);
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-coffee-dark mb-4">Owner Dashboard - Manage Products</h1>
+      
+      <Button
+        onClick={() => setEditingProduct({} as CoffeeProduct)}
+        className="mb-4 bg-coffee-green hover:bg-coffee-green/90 text-coffee-dark"
+      >
+        Add New Product
+      </Button>
+
+      {editingProduct && (
+        <ProductForm
+          product={editingProduct}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditingProduct(null)}
+        />
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        {products.map((product) => (
+          <Card key={product.id} className="shadow-md hover:shadow-lg">
+            <CardContent className="p-4">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-48 object-cover rounded-md mb-2"
+              />
+              <h2 className="text-lg font-semibold text-coffee-dark">{product.name}</h2>
+              <p className="text-gray-600">{product.description}</p>
+              <p className="text-green-600 font-bold">${product.price.toFixed(2)}</p>
+              <p className="text-sm text-gray-500">Category: {product.category}</p>
+              {product.origin && <p className="text-sm text-gray-500">Origin: {product.origin}</p>}
+              {product.roastLevel && (
+                <p className="text-sm text-gray-500">Roast: {product.roastLevel}</p>
+              )}
+              {product.featured && (
+                <span className="inline-block bg-yellow-200 text-yellow-800 text-xs px-2 py-1 rounded-full mt-2">
+                  Featured
+                </span>
+              )}
+              <div className="mt-4 flex space-x-2">
+                <Button
+                  onClick={() => handleEdit(product)}
+                  className="bg-coffee-brown hover:bg-coffee-brown/90 text-coffee-cream"
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => handleDelete(product.id)}
+                  variant="destructive"
+                >
+                  Delete
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default OwnerPage;
