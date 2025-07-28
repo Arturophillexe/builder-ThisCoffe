@@ -1,8 +1,19 @@
+import { PayPalButtons } from '@paypal/react-paypal-js';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { components } from '@paypal/paypal-js/types/apis/openapi/checkout_orders_v2';
+import { OnCancelledActions } from '@paypal/paypal-js';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, getTotalPrice } = useCart();
+
+  function handlePayPalError(err: Record<string, unknown>): void {
+    throw new Error('Function not implemented.');
+  }
+
+  function handlePayPalCancel(data: Record<string, unknown>, actions: OnCancelledActions): void {
+    throw new Error('Function not implemented.');
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -66,12 +77,40 @@ const Cart = () => {
             <h2 className="text-xl font-bold">
               Total: ${getTotalPrice().toFixed(2)}
             </h2>
-            <Link
-              to="/checkout"
-              className="mt-4 inline-block bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
-            >
-              Pasar a la caja
-            </Link>
+              <div className="space-y-4">
+                <PayPalButtons
+                  style={{
+                    layout: "vertical",
+                    color: "gold",
+                    shape: "rect",
+                    label: "paypal",
+                  }}
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: getTotalPrice().toString(),
+                            currency_code: "USD",
+                          },
+                        },
+                      ],
+                      intent: "CAPTURE",
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    function handlePayPalSuccess(details: { create_time?: components["schemas"]["date_time"]; update_time?: components["schemas"]["date_time"]; } & { id?: string; payment_source?: components["schemas"]["payment_source_response"]; intent?: components["schemas"]["checkout_payment_intent"]; processing_instruction?: components["schemas"]["processing_instruction"]; payer?: components["schemas"]["payer"]; purchase_units?: components["schemas"]["purchase_unit"][]; status?: components["schemas"]["order_status"]; links?: readonly components["schemas"]["link_description"][]; }) {
+                      throw new Error('Function not implemented.');
+                    }
+
+                    return actions.order?.capture().then((details) => {
+                      handlePayPalSuccess(details);
+                    });
+                  }}
+                  onError={handlePayPalError}
+                  onCancel={handlePayPalCancel}
+                />
+              </div>
           </div>
         </div>
       )}
