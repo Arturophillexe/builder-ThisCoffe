@@ -33,9 +33,16 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      await login(formData.email, formData.password);
+      const response = await login(formData.email, formData.password);
       toast.success("¡Inicio de sesión exitoso!");
-      navigate("/");
+
+      // Check if user context is available after login
+      const authContext = useAuth();
+      if (authContext.user && authContext.user.Usertype === 'seller') {
+        navigate("/owner");
+      } else {
+        navigate("/");
+      }
     } catch (error: any) {
       toast.error(error.message || "Error al iniciar sesión");
     } finally {
