@@ -12,7 +12,7 @@ import Sponsors from "./pages/Sponsors";
 import Blog from "./pages/Blog";
 import Events from "./pages/Events";
 import About from "./pages/About";
-import Login from "./pages/LoginPage";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
