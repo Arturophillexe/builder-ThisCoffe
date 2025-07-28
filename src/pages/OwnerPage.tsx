@@ -197,6 +197,26 @@ const OwnerPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
+  // Load products on component mount
+  useEffect(() => {
+    if (user && user.Usertype === "seller") {
+      loadProducts();
+    }
+  }, [user]);
+
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const data = await productosAPI.obtenerMisProductos();
+      setProducts(data);
+    } catch (error: any) {
+      console.error("Error al cargar productos:", error);
+      toast.error("Error al cargar productos");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (!user || user.Usertype !== "seller") {
     return (
       <div className="container mx-auto p-4 text-coffee-dark">
@@ -216,22 +236,46 @@ const OwnerPage: React.FC = () => {
     setEditingProduct(product);
   };
 
-  const handleDelete = (id: string) => {
-    setProducts(products.filter((p) => p.id !== id));
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+      return;
+    }
+
+    try {
+      await productosAPI.eliminar(id);
+      setProducts(products.filter((p) => p._id !== id));
+      toast.success("Producto eliminado exitosamente");
+    } catch (error: any) {
+      console.error("Error al eliminar producto:", error);
+      toast.error("Error al eliminar producto");
+    }
   };
 
-  const handleSubmit = (updatedProduct: CoffeeProduct) => {
-    if (updatedProduct.id) {
-      setProducts(
-        products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p)),
-      );
-    } else {
-      setProducts([
-        ...products,
-        { ...updatedProduct, id: Date.now().toString() },
-      ]);
+  const handleSubmit = async (productData: CoffeeProduct) => {
+    try {
+      setSubmitting(true);
+
+      if (productData._id) {
+        // Update existing product
+        const response = await productosAPI.actualizar(productData._id, productData);
+        setProducts(
+          products.map((p) => (p._id === productData._id ? response.producto : p)),
+        );
+        toast.success("Producto actualizado exitosamente");
+      } else {
+        // Create new product
+        const response = await productosAPI.crear(productData);
+        setProducts([response.producto, ...products]);
+        toast.success("Producto creado exitosamente");
+      }
+
+      setEditingProduct(null);
+    } catch (error: any) {
+      console.error("Error al guardar producto:", error);
+      toast.error(error.message || "Error al guardar producto");
+    } finally {
+      setSubmitting(false);
     }
-    setEditingProduct(null);
   };
 
   return (
