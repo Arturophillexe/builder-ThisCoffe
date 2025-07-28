@@ -77,12 +77,7 @@ const Signup = () => {
 
   const roles = [
     "Dueño de Negocio",
-    "Gerente de Eventos",
-    "Profesional de RRHH",
-    "Gerente de Oficina",
-    "Profesional de Marketing",
-    "Entusiasta del Café",
-    "Otro",
+    "Entusiasta del Café"
   ];
 
   return (
